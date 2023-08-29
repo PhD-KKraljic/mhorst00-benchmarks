@@ -1,0 +1,7 @@
+WG size of kernel = 16 X 16
+Generate input matrix internally, size =1
+Creating matrix internally size=1
+num_devices = 2
+Create GPU context
+setting ROCm LIKWID marker
+ERROR:  perimeter clEnqueueNDRangeKernel()=>-63 failed

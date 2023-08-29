@@ -1,0 +1,750 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeDetermineSystem.cmake:204 (message)"
+      - "CMakeLists.txt:56 (project)"
+    message: |
+      The system is: Linux - 4.18.0-425.3.1.el8.x86_64 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:56 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /packages/gcc/10.2.0/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /storage/users/kraljic/workspace/rocHPL/CMakeFiles/3.26.0-rc6/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:56 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-XTvZHX"
+      binary: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-XTvZHX"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/storage/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-XTvZHX
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_667aa/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_667aa.dir/build.make CMakeFiles/cmTC_667aa.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-XTvZHX'
+        Building CXX object CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o
+        /packages/gcc/10.2.0/bin/c++   -v -o CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -c /storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/packages/gcc/10.2.0/bin/c++
+        Target: x86_64-pc-linux-gnu
+        Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 10.2.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/cc1plus -quiet -v -iprefix /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/ -D_GNU_SOURCE /storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccfXz5YU.s
+        GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 10.2.0, GMP version 6.1.2, MPFR version 3.1.6-p2, MPC version 1.0.2, isl version none
+        warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"
+        ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /packages/cuda/11.1.1/extras/CUPTI/include
+         /packages/cuda/11.1.1/include
+         /storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include
+         /packages/gcc/10.2.0/include
+         /packages/mpc/1.0.2/include
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed
+         /usr/local/include
+         /usr/include
+        End of search list.
+        GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 10.2.0, GMP version 6.1.2, MPFR version 3.1.6-p2, MPC version 1.0.2, isl version none
+        warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: a95eb2a6ff8e07c3bfac1c10fa1262d6
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         as -v --64 -o CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccfXz5YU.s
+        GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-117.el8
+        COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+        Linking CXX executable cmTC_667aa
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_667aa.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++  -v CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_667aa 
+        Using built-in specs.
+        COLLECT_GCC=/packages/gcc/10.2.0/bin/c++
+        COLLECT_LTO_WRAPPER=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 10.2.0 (GCC) 
+        COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_667aa' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdo0iNe.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_667aa /lib/../lib64/crt1.o /lib/../lib64/crti.o /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_667aa' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-XTvZHX'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:56 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/packages/cuda/11.1.1/extras/CUPTI/include]
+          add: [/packages/cuda/11.1.1/include]
+          add: [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include]
+          add: [/packages/gcc/10.2.0/include]
+          add: [/packages/mpc/1.0.2/include]
+          add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0]
+          add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu]
+          add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward]
+          add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include]
+          add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed]
+          add: [/usr/local/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/packages/cuda/11.1.1/extras/CUPTI/include] ==> [/packages/cuda/11.1.1/extras/CUPTI/include]
+        collapse include dir [/packages/cuda/11.1.1/include] ==> [/packages/cuda/11.1.1/include]
+        collapse include dir [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include] ==> [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include]
+        collapse include dir [/packages/gcc/10.2.0/include] ==> [/packages/gcc/10.2.0/include]
+        collapse include dir [/packages/mpc/1.0.2/include] ==> [/packages/mpc/1.0.2/include]
+        collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0] ==> [/storage/packages/gcc/10.2.0/include/c++/10.2.0]
+        collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu] ==> [/storage/packages/gcc/10.2.0/include/c++/10.2.0/x86_64-pc-linux-gnu]
+        collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward] ==> [/storage/packages/gcc/10.2.0/include/c++/10.2.0/backward]
+        collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include]
+        collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/packages/cuda/11.1.1/extras/CUPTI/include;/packages/cuda/11.1.1/include;/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include;/packages/gcc/10.2.0/include;/packages/mpc/1.0.2/include;/storage/packages/gcc/10.2.0/include/c++/10.2.0;/storage/packages/gcc/10.2.0/include/c++/10.2.0/x86_64-pc-linux-gnu;/storage/packages/gcc/10.2.0/include/c++/10.2.0/backward;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed;/usr/local/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:56 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-XTvZHX]
+        ignore line: []
+        ignore line: [Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_667aa/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_667aa.dir/build.make CMakeFiles/cmTC_667aa.dir/build]
+        ignore line: [gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-XTvZHX']
+        ignore line: [Building CXX object CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/packages/gcc/10.2.0/bin/c++   -v -o CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -c /storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/packages/gcc/10.2.0/bin/c++]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.2.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/cc1plus -quiet -v -iprefix /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/ -D_GNU_SOURCE /storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccfXz5YU.s]
+        ignore line: [GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 10.2.0  GMP version 6.1.2  MPFR version 3.1.6-p2  MPC version 1.0.2  isl version none]
+        ignore line: [warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /packages/cuda/11.1.1/extras/CUPTI/include]
+        ignore line: [ /packages/cuda/11.1.1/include]
+        ignore line: [ /storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include]
+        ignore line: [ /packages/gcc/10.2.0/include]
+        ignore line: [ /packages/mpc/1.0.2/include]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 10.2.0  GMP version 6.1.2  MPFR version 3.1.6-p2  MPC version 1.0.2  isl version none]
+        ignore line: [warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: a95eb2a6ff8e07c3bfac1c10fa1262d6]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccfXz5YU.s]
+        ignore line: [GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-117.el8]
+        ignore line: [COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [Linking CXX executable cmTC_667aa]
+        ignore line: [/storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_667aa.dir/link.txt --verbose=1]
+        ignore line: [/packages/gcc/10.2.0/bin/c++  -v CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_667aa ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/packages/gcc/10.2.0/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.2.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_667aa' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        link line: [ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdo0iNe.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_667aa /lib/../lib64/crt1.o /lib/../lib64/crti.o /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o]
+          arg [/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccdo0iNe.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_667aa] ==> ignore
+          arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+          arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+          arg [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o] ==> obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o]
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0]
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc]
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib] ==> dir [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib]
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..]
+          arg [CMakeFiles/cmTC_667aa.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o] ==> obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o]
+          arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+        collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+        collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+        collapse obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o]
+        collapse obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o]
+        collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc] ==> [/storage/packages/gcc/10.2.0/lib/gcc]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64] ==> [/storage/packages/gcc/10.2.0/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib] ==> [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> [/storage/packages/gcc/10.2.0/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/lib64/crt1.o;/lib64/crti.o;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o;/lib64/crtn.o]
+        implicit dirs: [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0;/storage/packages/gcc/10.2.0/lib/gcc;/storage/packages/gcc/10.2.0/lib64;/lib64;/usr/lib64;/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib;/storage/packages/gcc/10.2.0/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindOpenMP.cmake:219 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindOpenMP.cmake:483 (_OPENMP_GET_FLAGS)"
+      - "cmake/Dependencies.cmake:70 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "Detecting CXX OpenMP compiler info"
+    directories:
+      source: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug"
+      binary: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/storage/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "OpenMP_COMPILE_RESULT_CXX_fopenmp"
+      cached: true
+      stdout: |
+        Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_14b79/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_14b79.dir/build.make CMakeFiles/cmTC_14b79.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug'
+        Building CXX object CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o
+        /packages/gcc/10.2.0/bin/c++   -fopenmp -v -std=c++11 -o CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -c /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug/OpenMPTryFlag.cpp
+        Using built-in specs.
+        COLLECT_GCC=/packages/gcc/10.2.0/bin/c++
+        Target: x86_64-pc-linux-gnu
+        Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 10.2.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-std=c++11' '-o' 'CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread'
+         /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/cc1plus -quiet -v -iprefix /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/ -D_GNU_SOURCE -D_REENTRANT /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug/OpenMPTryFlag.cpp -quiet -dumpbase OpenMPTryFlag.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -std=c++11 -version -fopenmp -o /tmp/ccD00uK3.s
+        GNU C++11 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 10.2.0, GMP version 6.1.2, MPFR version 3.1.6-p2, MPC version 1.0.2, isl version none
+        warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include"
+        ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"
+        ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /packages/cuda/11.1.1/extras/CUPTI/include
+         /packages/cuda/11.1.1/include
+         /storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include
+         /packages/gcc/10.2.0/include
+         /packages/mpc/1.0.2/include
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include
+         /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed
+         /usr/local/include
+         /usr/include
+        End of search list.
+        GNU C++11 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 10.2.0, GMP version 6.1.2, MPFR version 3.1.6-p2, MPC version 1.0.2, isl version none
+        warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: a95eb2a6ff8e07c3bfac1c10fa1262d6
+        COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-std=c++11' '-o' 'CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread'
+         as -v --64 -o CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o /tmp/ccD00uK3.s
+        GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-117.el8
+        COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-std=c++11' '-o' 'CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread'
+        Linking CXX executable cmTC_14b79
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14b79.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++  -fopenmp -v CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -o cmTC_14b79  -v 
+        Using built-in specs.
+        COLLECT_GCC=/packages/gcc/10.2.0/bin/c++
+        COLLECT_LTO_WRAPPER=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 10.2.0 (GCC) 
+        COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
+        Reading specs from /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/libgomp.spec
+        COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'cmTC_14b79' '-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread'
+         /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cceIWTVI.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_14b79 /lib/../lib64/crt1.o /lib/../lib64/crti.o /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -lstdc++ -lm -lgomp -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'cmTC_14b79' '-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread'
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindOpenMP.cmake:262 (message)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindOpenMP.cmake:483 (_OPENMP_GET_FLAGS)"
+      - "cmake/Dependencies.cmake:70 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    message: |
+      Parsed CXX OpenMP implicit link information from above output:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug]
+        ignore line: []
+        ignore line: [Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_14b79/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_14b79.dir/build.make CMakeFiles/cmTC_14b79.dir/build]
+        ignore line: [gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug']
+        ignore line: [Building CXX object CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o]
+        ignore line: [/packages/gcc/10.2.0/bin/c++   -fopenmp -v -std=c++11 -o CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -c /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug/OpenMPTryFlag.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/packages/gcc/10.2.0/bin/c++]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.2.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-std=c++11' '-o' 'CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread']
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/cc1plus -quiet -v -iprefix /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/ -D_GNU_SOURCE -D_REENTRANT /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-bLY8Ug/OpenMPTryFlag.cpp -quiet -dumpbase OpenMPTryFlag.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -std=c++11 -version -fopenmp -o /tmp/ccD00uK3.s]
+        ignore line: [GNU C++11 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 10.2.0  GMP version 6.1.2  MPFR version 3.1.6-p2  MPC version 1.0.2  isl version none]
+        ignore line: [warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include"]
+        ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /packages/cuda/11.1.1/extras/CUPTI/include]
+        ignore line: [ /packages/cuda/11.1.1/include]
+        ignore line: [ /storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/include]
+        ignore line: [ /packages/gcc/10.2.0/include]
+        ignore line: [ /packages/mpc/1.0.2/include]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include]
+        ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++11 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 10.2.0  GMP version 6.1.2  MPFR version 3.1.6-p2  MPC version 1.0.2  isl version none]
+        ignore line: [warning: MPFR header version 3.1.6-p2 differs from library version 3.1.6.]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: a95eb2a6ff8e07c3bfac1c10fa1262d6]
+        ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-std=c++11' '-o' 'CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o /tmp/ccD00uK3.s]
+        ignore line: [GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-117.el8]
+        ignore line: [COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-std=c++11' '-o' 'CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread']
+        ignore line: [Linking CXX executable cmTC_14b79]
+        ignore line: [/storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14b79.dir/link.txt --verbose=1]
+        ignore line: [/packages/gcc/10.2.0/bin/c++  -fopenmp -v CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -o cmTC_14b79  -v ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/packages/gcc/10.2.0/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.2.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [Reading specs from /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/libgomp.spec]
+        ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'cmTC_14b79' '-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread']
+        link line: [ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cceIWTVI.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_14b79 /lib/../lib64/crt1.o /lib/../lib64/crti.o /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o -lstdc++ -lm -lgomp -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o]
+          arg [/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cceIWTVI.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_14b79] ==> ignore
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0]
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc]
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib] ==> dir [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib]
+          arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..]
+          arg [CMakeFiles/cmTC_14b79.dir/OpenMPTryFlag.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgomp] ==> lib [gomp]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc] ==> [/storage/packages/gcc/10.2.0/lib/gcc]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64] ==> [/storage/packages/gcc/10.2.0/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib] ==> [/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib]
+        collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> [/storage/packages/gcc/10.2.0/lib]
+        implicit libs: [stdc++;m;gomp;gcc_s;gcc;pthread;c;gcc_s;gcc]
+        implicit objs: []
+        implicit dirs: [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0;/storage/packages/gcc/10.2.0/lib/gcc;/storage/packages/gcc/10.2.0/lib64;/lib64;/usr/lib64;/storage/packages/SRC/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/hip-4.1.0-pmmejhpts55u7y2waoo4ynqz2bagzyde/lib;/storage/packages/gcc/10.2.0/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindOpenMP.cmake:419 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindOpenMP.cmake:557 (_OPENMP_GET_SPEC_DATE)"
+      - "cmake/Dependencies.cmake:70 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "Detecting CXX OpenMP version"
+    directories:
+      source: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-2lnBPm"
+      binary: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-2lnBPm"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/storage/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "OpenMP_SPECTEST_CXX_"
+      cached: true
+      stdout: |
+        Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-2lnBPm
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d7901/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d7901.dir/build.make CMakeFiles/cmTC_d7901.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-2lnBPm'
+        Building CXX object CMakeFiles/cmTC_d7901.dir/OpenMPCheckVersion.cpp.o
+        /packages/gcc/10.2.0/bin/c++   -fopenmp -std=c++11 -o CMakeFiles/cmTC_d7901.dir/OpenMPCheckVersion.cpp.o -c /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-2lnBPm/OpenMPCheckVersion.cpp
+        Linking CXX executable cmTC_d7901
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7901.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++  -fopenmp CMakeFiles/cmTC_d7901.dir/OpenMPCheckVersion.cpp.o -o cmTC_d7901 
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-2lnBPm'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "cmake/Dependencies.cmake:79 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-Uj57c5"
+      binary: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-Uj57c5"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/storage/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-Uj57c5
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_32451/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_32451.dir/build.make CMakeFiles/cmTC_32451.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-Uj57c5'
+        Building CXX object CMakeFiles/cmTC_32451.dir/test_mpi.cpp.o
+        /packages/gcc/10.2.0/bin/c++  -isystem /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/include -std=c++11 -pthread -o CMakeFiles/cmTC_32451.dir/test_mpi.cpp.o -c /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-Uj57c5/test_mpi.cpp
+        Linking CXX executable cmTC_32451
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32451.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++ -Wl,-rpath -Wl,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/build/../lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_32451.dir/test_mpi.cpp.o -o cmTC_32451  -Wl,-rpath,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-Uj57c5'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "cmake/Dependencies.cmake:79 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-BVHxju"
+      binary: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-BVHxju"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/storage/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-BVHxju
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bbc3a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_bbc3a.dir/build.make CMakeFiles/cmTC_bbc3a.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-BVHxju'
+        Building CXX object CMakeFiles/cmTC_bbc3a.dir/test_mpi.cpp.o
+        /packages/gcc/10.2.0/bin/c++  -isystem /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/include -std=c++11 -pthread -o CMakeFiles/cmTC_bbc3a.dir/test_mpi.cpp.o -c /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-BVHxju/test_mpi.cpp
+        Linking CXX executable cmTC_bbc3a
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bbc3a.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++ -Wl,-rpath -Wl,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/build/../lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_bbc3a.dir/test_mpi.cpp.o -o cmTC_bbc3a  -Wl,-rpath,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-BVHxju'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "cmake/Dependencies.cmake:79 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-qqqF5u"
+      binary: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-qqqF5u"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/storage/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-qqqF5u
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_decfb/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_decfb.dir/build.make CMakeFiles/cmTC_decfb.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-qqqF5u'
+        Building CXX object CMakeFiles/cmTC_decfb.dir/test_mpi.cpp.o
+        /packages/gcc/10.2.0/bin/c++  -isystem /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/include -std=c++11 -pthread -o CMakeFiles/cmTC_decfb.dir/test_mpi.cpp.o -c /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-qqqF5u/test_mpi.cpp
+        Linking CXX executable cmTC_decfb
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_decfb.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++ -Wl,-rpath -Wl,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/build/../lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_decfb.dir/test_mpi.cpp.o -o cmTC_decfb  -Wl,-rpath,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-qqqF5u'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "cmake/Dependencies.cmake:79 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-5SvBZe"
+      binary: "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-5SvBZe"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/storage/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-5SvBZe
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_10fe3/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_10fe3.dir/build.make CMakeFiles/cmTC_10fe3.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-5SvBZe'
+        Building CXX object CMakeFiles/cmTC_10fe3.dir/test_mpi.cpp.o
+        /packages/gcc/10.2.0/bin/c++  -isystem /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/include -std=c++11 -pthread -o CMakeFiles/cmTC_10fe3.dir/test_mpi.cpp.o -c /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-5SvBZe/test_mpi.cpp
+        Linking CXX executable cmTC_10fe3
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_10fe3.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++ -Wl,-rpath -Wl,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/build/../lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_10fe3.dir/test_mpi.cpp.o -o cmTC_10fe3  -Wl,-rpath,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-5SvBZe'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "cmake/Dependencies.cmake:79 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-We3Sjf"
+      binary: "/home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-We3Sjf"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: /home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-We3Sjf
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_48a63/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_48a63.dir/build.make CMakeFiles/cmTC_48a63.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-We3Sjf'
+        Building CXX object CMakeFiles/cmTC_48a63.dir/test_mpi.cpp.o
+        /packages/gcc/10.2.0/bin/c++  -isystem /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/include -std=c++11 -pthread -o CMakeFiles/cmTC_48a63.dir/test_mpi.cpp.o -c /home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-We3Sjf/test_mpi.cpp
+        Linking CXX executable cmTC_48a63
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48a63.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++ -Wl,-rpath -Wl,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/build/../lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_48a63.dir/test_mpi.cpp.o -o cmTC_48a63  -Wl,-rpath,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-We3Sjf'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/storage/packages/cmake/3.26.0-rc6/share/cmake-3.26/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "cmake/Dependencies.cmake:79 (find_package)"
+      - "CMakeLists.txt:71 (include)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-xErOHt"
+      binary: "/home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-xErOHt"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/users/kraljic/workspace/rocHPL/cmake;/packages/cuda/11.1.1/hip/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: /home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-xErOHt
+        
+        Run Build Command(s):/storage/packages/cmake/3.26.0-rc6/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_58b45/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_58b45.dir/build.make CMakeFiles/cmTC_58b45.dir/build
+        gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-xErOHt'
+        Building CXX object CMakeFiles/cmTC_58b45.dir/test_mpi.cpp.o
+        /packages/gcc/10.2.0/bin/c++  -isystem /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/include -std=c++11 -pthread -o CMakeFiles/cmTC_58b45.dir/test_mpi.cpp.o -c /home/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-xErOHt/test_mpi.cpp
+        Linking CXX executable cmTC_58b45
+        /storage/packages/cmake/3.26.0-rc6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_58b45.dir/link.txt --verbose=1
+        /packages/gcc/10.2.0/bin/c++ -Wl,-rpath -Wl,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/build/../lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_58b45.dir/test_mpi.cpp.o -o cmTC_58b45  -Wl,-rpath,/storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib /storage/users/kraljic/workspace/rocHPL/tpl/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeScratch/TryCompile-xErOHt'
+        
+      exitCode: 0
+...

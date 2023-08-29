@@ -1,0 +1,11 @@
+TABLE,Region roc_lud,Group 1 Raw,MEM_UTIL_GILGAMESH,2
+Region Info,GPU 0,
+RDTSC Runtime [s],0.079709,
+call count,1,
+Event,Counter,GPU 0
+ROCP_MemUnitBusy,ROCM0,0.0421
+RSMI_POWER_AVE[0],ROCM1,47000000
+TABLE,Region roc_lud,Group 1 Metric,MEM_UTIL_GILGAMESH,2
+Metric,GPU 0,
+Memory utilization,0.0421,
+Average Power,47,

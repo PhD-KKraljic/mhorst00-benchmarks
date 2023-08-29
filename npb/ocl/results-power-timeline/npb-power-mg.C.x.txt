@@ -1,0 +1,70 @@
+Old LD_PRELOAD=likwid-appDaemon.so
+New LD_PRELOAD=
+Rocmon GPU string: 0
+Rocmon Event string: POWER
+
+
+ NAS Parallel Benchmarks (NPB3.3.1-OCL) - MG Benchmark
+
+ Size:  512x 512x 512  (class C)
+ Iterations:  20
+
+ Initialization time:          4.3803 seconds
+
+  iter   1
+  iter   2
+  iter   3
+  iter   4
+  iter   5
+  iter   6
+  iter   7
+  iter   8
+  iter   9
+  iter  10
+  iter  11
+  iter  12
+  iter  13
+  iter  14
+  iter  15
+  iter  16
+  iter  17
+  iter  18
+  iter  19
+  iter  20
+
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ L2 Norm is  5.7067322857405E-07
+ Error is    4.9763185651190E-20
+
+
+ MG Benchmark Completed.
+ Class           =                        C
+ Size            =            512x 512x 512
+ Iterations      =                       20
+ Time in seconds =              0.458445644
+ Mop/s total     =                339609.65
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              12 Jul 2023
+
+ Compile options:
+    CC           = gcc
+    CLINK        = $(CC)
+    C_LIB        = -lm -L/opt/rocm/opencl/lib -lOpenCL
+    C_INC        = -I../common -I/opt/rocm/include
+    CFLAGS       = -g -Wall -O3 -mcmodel=large -fopenmp
+    CLINKFLAGS   = -O3 -mcmodel=large -fopenmp
+
+ OpenCL options:
+    Device type  = CL_DEVICE_TYPE_GPU
+    Device name  = gfx90a:sramecc+:xnack-
+
+--------------------------------------
+ Please send all errors/feedbacks to:
+ Center for Manycore Programming
+ cmp@aces.snu.ac.kr
+ http://aces.snu.ac.kr
+--------------------------------------
+

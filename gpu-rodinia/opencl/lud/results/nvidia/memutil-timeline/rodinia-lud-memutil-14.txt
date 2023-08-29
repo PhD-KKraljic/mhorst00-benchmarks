@@ -1,0 +1,10 @@
+Old LD_PRELOAD=likwid-appDaemon.so
+New LD_PRELOAD=
+Nvmon GPU string: 0
+Nvmon Event string: MEM
+WG size of kernel = 16 X 16
+Generate input matrix internally, size =16384
+Creating matrix internally size=16384
+Starting nvmon marker
+Time consumed(ms): 1888.934000
+Stopping nvmon marker

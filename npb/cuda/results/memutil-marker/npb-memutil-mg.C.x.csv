@@ -1,0 +1,9 @@
+TABLE,Region nv_npbmg,Group 1 Raw,MEM,1
+Region Info,GPU 0,
+RDTSC Runtime [s],0.284703,
+call count,1,
+Event,Counter,GPU 0
+MEMORY_UTILIZATION,GPU0,0
+TABLE,Region nv_npbmg,Group 1 Metric,MEM,1
+Metric,GPU 0,
+Memory utilization [%],0,

@@ -1,0 +1,16 @@
+Old LD_PRELOAD=likwid-appDaemon.so
+New LD_PRELOAD=
+Rocmon GPU string: 0
+Rocmon Event string: POWER
+WG size of kernel = 16 X 16
+Generate input matrix internally, size =32
+Creating matrix internally size=32
+num_devices = 2
+Create GPU context
+Init: 1360.899048
+MemAlloc: 0.011000
+HtoD: 0.007680
+Exec: 0.139360
+DtoH: 0.006560
+Close: 0.008000
+Total: 1362.441040

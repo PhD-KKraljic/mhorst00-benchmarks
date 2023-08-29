@@ -1,0 +1,14 @@
+WG size of kernel = 16 X 16
+Generate input matrix internally, size =512
+Creating matrix internally size=512
+num_devices = 2
+Create GPU context
+setting ROCm LIKWID marker
+ROCm LIKWID marker closed
+Init: 1420.821045
+MemAlloc: 0.010000
+HtoD: 0.061440
+Exec: 2.201914
+DtoH: 0.043520
+Close: 0.009000
+Total: 2537.941895

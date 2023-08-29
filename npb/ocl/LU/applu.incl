@@ -1,0 +1,442 @@
+//---------------------------------------------------------------------------//
+//                                                                           //
+//  This benchmark is an OpenCL C version of the NPB LU code. This OpenCL C  //
+//  version is a part of SNU-NPB 2019 developed by the Center for Manycore   //
+//  Programming at Seoul National University and derived from the serial     //
+//  Fortran versions in "NPB3.3.1-SER" developed by NAS.                     //
+//                                                                           //
+//  Permission to use, copy, distribute and modify this software for any     //
+//  purpose with or without fee is hereby granted. This software is          //
+//  provided "as is" without express or implied warranty.                    //
+//                                                                           //
+//  Information on original NPB 3.3.1, including the technical report, the   //
+//  original specifications, source code, results and information on how     //
+//  to submit new results, is available at:                                  //
+//                                                                           //
+//           http://www.nas.nasa.gov/Software/NPB/                           //
+//                                                                           //
+//  Information on SNU-NPB 2019, including the conference paper and source   //
+//  code, is available at:                                                   //
+//                                                                           //
+//           http://aces.snu.ac.kr                                           //
+//                                                                           //
+//  Send comments or suggestions for this OpenCL C version to                //
+//  snunpb@aces.snu.ac.kr                                                    //
+//                                                                           //
+//          Center for Manycore Programming                                  //
+//          School of Computer Science and Engineering                       //
+//          Seoul National University                                        //
+//          Seoul 08826, Korea                                               //
+//                                                                           //
+//          E-mail: snunpb@aces.snu.ac.kr                                    //
+//                                                                           //
+//---------------------------------------------------------------------------//
+
+//---------------------------------------------------------------------------//
+// Authors: Youngdong Do, Hyung Mo Kim, Pyeongseok Oh, Daeyoung Park,        //
+//          and Jaejin Lee                                                   //
+//---------------------------------------------------------------------------//
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
+//---  applu.incl   
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
+
+//---------------------------------------------------------------------
+// npbparams.h defines parameters that depend on the class and 
+// number of nodes
+//---------------------------------------------------------------------
+
+#include "npbparams.h"
+#include "type.h"
+#include <CL/cl.h>
+#include "cl_util.h"
+
+//---------------------------------------------------------------------
+// parameters which can be overridden in runtime config file
+// isiz1,isiz2,isiz3 give the maximum size
+// ipr = 1 to print out verbose information
+// omega = 2.0 is correct for all classes
+// tolrsd is tolerance levels for steady state residuals
+//---------------------------------------------------------------------
+#define IPR_DEFAULT     1
+#define OMEGA_DEFAULT   1.2
+#define TOLRSD1_DEF     1.0e-08
+#define TOLRSD2_DEF     1.0e-08
+#define TOLRSD3_DEF     1.0e-08
+#define TOLRSD4_DEF     1.0e-08
+#define TOLRSD5_DEF     1.0e-08
+
+#define C1              1.40e+00
+#define C2              0.40e+00
+#define C3              1.00e-01
+#define C4              1.00e+00
+#define C5              1.40e+00
+
+//---------------------------------------------------------------------
+// grid
+//---------------------------------------------------------------------
+/* common/cgcon/ */
+extern double dxi, deta, dzeta;
+extern double tx1, tx2, tx3;
+extern double ty1, ty2, ty3;
+extern double tz1, tz2, tz3;
+extern int nx, ny, nz;
+extern int nx0, ny0, nz0;
+extern int ist, iend;
+extern int jst, jend;
+extern int ii1, ii2;
+extern int ji1, ji2;
+extern int ki1, ki2;
+
+//---------------------------------------------------------------------
+// dissipation
+//---------------------------------------------------------------------
+/* common/disp/ */
+extern double dx1, dx2, dx3, dx4, dx5;
+extern double dy1, dy2, dy3, dy4, dy5;
+extern double dz1, dz2, dz3, dz4, dz5;
+extern double dssp;
+
+//---------------------------------------------------------------------
+// field variables and residuals
+// to improve cache performance, second two dimensions padded by 1 
+// for even number sizes only.
+// Note: corresponding array (called "v") in routines blts, buts, 
+// and l2norm are similarly padded
+//---------------------------------------------------------------------
+/* common/cvar/ */
+extern double u    [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1][5];
+extern double rsd  [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1][5];
+extern double frct [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1][5];
+extern double flux [ISIZ1][5];
+extern double qs   [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1];
+extern double rho_i[ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1];
+
+//---------------------------------------------------------------------
+// output control parameters
+//---------------------------------------------------------------------
+/* common/cprcon/ */
+extern int ipr, inorm;
+
+//---------------------------------------------------------------------
+// newton-raphson iteration control parameters
+//---------------------------------------------------------------------
+/* common/ctscon/ */
+extern double dt, omega, tolrsd[5], rsdnm[5], errnm[5], frc, ttotal;
+extern int itmax, invert;
+
+/* common/cjac/ */
+extern double a[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double b[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double c[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double d[ISIZ2][ISIZ1/2*2+1][5][5];
+
+/* common/cjacu/ */
+extern double au[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double bu[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double cu[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double du[ISIZ2][ISIZ1/2*2+1][5][5];
+
+
+//---------------------------------------------------------------------
+// coefficients of the exact solution
+//---------------------------------------------------------------------
+/* common/cexact/ */
+extern double ce[5][13];
+
+
+//---------------------------------------------------------------------
+// pintgr() - segmentation fault
+//---------------------------------------------------------------------
+extern double phi1[ISIZ3+2][ISIZ2+2];
+extern double phi2[ISIZ3+2][ISIZ2+2];
+
+
+//---------------------------------------------------------------------
+// timers
+//---------------------------------------------------------------------
+/* common/timer/ */
+extern double maxtime;
+extern logical timeron;
+#define t_total   1
+#define t_rhsx    2
+#define t_rhsy    3
+#define t_rhsz    4
+#define t_rhs     5
+#define t_jacld   6
+#define t_blts    7
+#define t_jacu    8
+#define t_buts    9
+#define t_add     10
+#define t_l2norm  11
+#define t_last    11
+
+
+
+//-----------------------------------------------------------------------
+// OpenCL - Macros
+//-----------------------------------------------------------------------
+#define t_jbl_KL_prof 20
+#define t_jbl_BR_prof 21
+#define t_jbu_KL_prof 22
+#define t_jbu_BR_prof 23
+
+// Command Queue Types - default queue is kernel queue 
+#define KERNEL_Q  0
+#define DATA_Q    1
+#define NUM_Q     2
+
+//#define DETAIL_INFO
+
+#ifdef DETAIL_INFO
+#define DETAIL_LOG(fmt, ...) fprintf(stdout, " [OpenCL Detailed Info] " fmt "\n", ## __VA_ARGS__)
+#else
+#define DETAIL_LOG(fmt, ...) 
+#endif
+
+//-----------------------------------------------------------------------
+// OpenCL - Variables
+//-----------------------------------------------------------------------
+
+/* OpenCL environment variables */
+extern cl_device_type     device_type;
+extern cl_device_id       device;
+extern char               *device_name;
+extern cl_context         context;
+extern cl_command_queue   cmd_q[NUM_Q];
+extern cl_program         p_ssor_baseline,
+                          p_jacld_blts_baseline, 
+                          p_jacld_blts_gmem, 
+                          p_jacld_blts_sync, 
+                          p_jacld_blts_fullopt, 
+                          p_jacu_buts_baseline,
+                          p_jacu_buts_gmem,
+                          p_jacu_buts_sync,
+                          p_jacu_buts_fullopt,
+                          p_l2norm,
+                          p_l2norm_baseline,
+                          p_l2norm_gmem,
+                          p_rhs_baseline,
+                          p_rhs_gmem,
+                          p_rhs_parallel,
+                          p_rhs_fullopt;
+
+/* OpenCL memory objects and sizes of them */
+extern cl_mem             m_sum1, 
+                          m_sum2,
+                          m_u_prev, 
+                          m_r_prev,
+                          m_rsd[2], 
+                          m_u[2], 
+                          m_frct[2], 
+                          m_qs[2], 
+                          m_rho_i[2];
+extern size_t             u_buf_size,
+                          rsd_buf_size,
+                          frct_buf_size,
+                          qs_buf_size,
+                          rho_i_buf_size,
+                          u_prev_buf_size,
+                          r_prev_buf_size;
+extern size_t             u_slice_size,
+                          rsd_slice_size,
+                          frct_slice_size,
+                          qs_slice_size,
+                          rho_i_slice_size,
+                          u_prev_slice_size,
+                          r_prev_slice_size;
+
+/* OpenCL Memory objects for Baseline */
+extern cl_mem             m_flux,
+                          m_utmp,
+                          m_rtmp,
+                          m_tmp_sum,
+                          m_a,
+                          m_b,
+                          m_c,
+                          m_d;
+
+/* OpenCL profiling variables */
+extern cl_event           *loop1_ev_wb_rsd, 
+                          *loop1_ev_wb_u, 
+                          *loop1_ev_rb_rsd,
+                          loop1_ev_pre_wb_rsd, 
+                          loop1_ev_pre_wb_u,
+                          *loop2_ev_rb_rsd, 
+                          *loop2_ev_rb_u,
+                          *loop2_ev_wb_rsd, 
+                          *loop2_ev_wb_u, 
+                          *loop2_ev_wb_frct,
+                          *loop2_ev_copy_rsd, 
+                          *loop2_ev_copy_u,
+                          *loop2_ev_copy_r_prev, 
+                          *loop2_ev_copy_u_prev,
+                          ev_kernel_l2norm_head1, 
+                          ev_kernel_l2norm_head2,
+                          *ev_k_l2norm_body1, 
+                          *ev_k_l2norm_body2,
+                          ev_data_l2norm_tail1, 
+                          ev_data_l2norm_tail2;
+
+/* OpenCL dynamic configuration flags */
+extern int                split_flag,
+                          buffering_flag;
+
+/* OpenCL device dependent varaibles */
+extern size_t             max_work_item_sizes[3],
+                          max_work_group_size;
+extern cl_ulong           gmem_size,
+                          max_mem_alloc_size,
+                          local_mem_size;
+extern cl_uint            max_compute_units;
+extern size_t             l2norm_lws, 
+                          l2norm_gws, 
+                          l2norm_wg_num,
+                          rhsy_lws[2],
+                          rhsz_lws[2],
+                          jacld_blts_lws, 
+                          jacu_buts_lws;
+extern int                work_num_item_default,
+                          loop1_work_max_iter, 
+                          loop2_work_max_iter,
+                          loop1_work_num_item_default, 
+                          loop2_work_num_item_default;
+
+/* Wave propagation variables */
+extern int                block_size, 
+                          block_size_k;
+extern size_t             *jacld_blts_prop_iter,
+                          *jacld_blts_work_num_item,
+                          *jacu_buts_prop_iter,
+                          *jacu_buts_work_num_item;
+
+/* Reduction variables */
+extern double             (* g_sum1)[5], (* g_sum2)[5];
+
+/* OpenCL optimization level */
+enum OptLevel {
+  OPT_BASELINE=0,
+  OPT_PARALLEL,
+  OPT_GLOBALMEM,
+  OPT_MEMLAYOUT,
+  OPT_SYNC,
+  OPT_FULL
+};
+
+extern enum OptLevel  g_opt_level;
+
+/* Wave Propagation Algorithm */
+enum PropSyncAlgo{
+  KERNEL_LAUNCH,
+  BARRIER
+};
+
+
+/* functions for OpenCL initialization and release */
+void ssor_init(int loop1_iter, int loop2_iter);
+void ssor1_init(int iter);
+void ssor1_release();
+void ssor1_release_ev();
+void ssor2_init(int iter);
+void ssor2_release();
+void ssor2_release_ev();
+void ssor_release();
+void jacld_blts_init(int iter, int item_default, 
+                     int blk_size_k, int blk_size);
+void jacld_blts_release(int iter);
+void jacu_buts_init(int iter, int item_default,
+                    int blk_size_k, int blk_size);
+void jacu_buts_release(int iter);
+void l2norm_init(int iter);
+void l2norm_release();
+void rhs_init(int iter);
+void rhs_release();
+
+/* functions for OpenCL Profiling */
+double ns_to_sec(cl_ulong ns);
+cl_ulong sec_to_ns(double sec);
+cl_ulong get_start_time_ev(cl_event ev);
+cl_ulong get_end_time_ev(cl_event ev);
+cl_ulong get_elapsed_time_ev(cl_event ev);
+
+void print_jbu_time();
+cl_ulong get_jbu_time(int iter);
+
+/* functions for OpenCL Event object handling */
+void ssor_alloc_ev1(int iter);
+void ssor_alloc_ev2(int iter);
+void ssor_release_ev1(int iter);
+void ssor_release_ev2(int iter);
+void rhs_release_ev(int iter);
+void l2norm_release_ev(int iter, int step, int norm, int itmax);
+void jacld_blts_release_ev(int iter);
+void jacu_buts_release_ev(int iter);
+
+void read_input();
+void domain();
+void setcoeff();
+void setbv();
+void exact(int i, int j, int k, double u000ijk[]);
+void setiv();
+void erhs();
+void ssor(int niter);
+void ssor1(int item, int base, int step, int buf_idx, cl_event *ev_wb_ptr);
+void ssor2(int item, int base, int step, int buf_idx, int temp_kst, double tmp2);
+void rhs();
+cl_event* rhs_body(int work_step, 
+                   int work_base, 
+                   int work_num_item, 
+                   int copy_buffer_base, 
+                   int copy_num_item, 
+                   cl_event* ev_wb_ptr);
+
+void l2norm (int ldx, int ldy, int ldz, 
+             int nx0, int ny0, int nz0,
+             int ist, int iend, 
+             int jst, int jend,
+             double v[][ldy/2*2+1][ldx/2*2+1][5], 
+             double sum[5], cl_mem * m_v);
+
+void l2norm_head(double sum[5], 
+                 double (* g_sum)[5], 
+                 cl_mem * m_sum, 
+                 cl_event* ev_kernel_ptr);
+
+void l2norm_body(int work_step, 
+                 int work_max_iter, 
+                 int work_base, 
+                 int work_num_item,
+                 cl_event* ev_wb_ptr, 
+                 cl_event* ev_kernel_ptr, 
+                 cl_mem * m_sum,
+                 int nz0, 
+                 int jst, int jend, 
+                 int ist, int iend);
+void l2norm_tail(double sum[5], 
+                 double (* g_sum)[5], 
+                 cl_mem* m_sum, 
+                 int nx0, int ny0, int nz0, 
+                 cl_event *ev_data_ptr);
+
+cl_event* jacld_blts_body(int work_step, 
+                          int work_max_iter, 
+                          int work_base, 
+                          int work_num_item);
+
+void jacu_buts_body(int work_step, 
+                    int work_max_iter, 
+                    int work_num_item, 
+                    int next_work_num_item, 
+                    int temp_kst, 
+                    int temp_kend,
+                    cl_event * ev_wb_ptr);
+
+void error();
+void pintgr();
+void verify(double xcr[5], double xce[5], double xci, 
+    char *Class, logical *verified);
+
+//---------------------------------------------------------------------
+//   end of include file
+//---------------------------------------------------------------------

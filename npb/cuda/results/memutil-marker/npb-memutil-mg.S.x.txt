@@ -1,0 +1,48 @@
+
+
+ NAS Parallel Benchmarks (NPB3.3.1-CUDA) - MG Benchmark
+
+ Size:   32x  32x  32  (class S)
+ Iterations:   4
+
+ Initialization time:          0.2359 seconds
+
+  iter   1
+  iter   2
+  iter   3
+  iter   4
+
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ L2 Norm is  5.3077070057349E-05
+ Error is    8.8972340779592E-18
+
+
+ MG Benchmark Completed
+ Class           =                        S
+ Size            =             32x  32x  32
+ Iterations      =                        4
+ Time in seconds =              0.002985550
+ Mop/s total     =                  2546.32
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              01 Aug 2023
+
+ Compile options:
+    CC           = gcc
+    CLINK        = g++
+    C_LIB        = -lm -L$(CUDA)/lib64 -L/var/tmp/likwid-nvidi...
+    C_INC        = -I../common -I/var/tmp/likwid-nvidia/include
+    CFLAGS       = -Wall -O2 -mcmodel=large -fopenmp
+    CLINKFLAGS   = -O3 -mcmodel=large -fopenmp
+
+ CUDA options:
+    Device name  = NVIDIA H100 PCIe
+
+--------------------------------------
+ Please send all errors/feedbacks to:
+ Center for Manycore Programming
+ cmp@aces.snu.ac.kr
+ http://aces.snu.ac.kr
+--------------------------------------

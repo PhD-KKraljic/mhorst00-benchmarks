@@ -1,0 +1,93 @@
+.TH LIKWID-SETFREQUENCIES 1 <DATE> likwid\-<VERSION>
+.SH NAME
+likwid-setFrequencies \- print and manage the clock frequency of hardware threads
+.SH SYNOPSIS
+.B likwid-setFrequencies 
+.RB [\-hvplmp]
+.RB [ \-c
+.IR <cpu_list> ]
+.RB [ \-g
+.IR <governor> ]
+.RB [ \-f,\-\-\^freq
+.IR <frequency> ]
+.RB [ \-x,\-\-\^min
+.IR <min_freq> ]
+.RB [ \-y,\-\-\^max
+.IR <max_freq> ]
+.RB [ \-t,\-\-\^turbo
+.IR <0|1> ]
+.RB [ \-\-\^umin
+.IR <uncore_min_freq> ]
+.RB [ \-\-\^umax
+.IR <uncore_max_freq> ]
+.RB [ \-\-\^reset]
+.RB [ \-\-\^ureset]
+.SH DESCRIPTION
+.B likwid-setFrequencies
+is a command line application to set the clock frequency of hardware threads. Since only priviledged users are allowed to change the frequency of hardware threads, the application works in combination with a daemon
+.B likwid-setFreq(1).
+The daemon needs the suid permission bit to be set in order to manipulate the sysfs entries. With
+.B likwid-setFrequencies
+the clock of all hardware thread inside the cpu_list or affinity domain can be set to a specific frequency or governor at once.
+.B likwid-setFrequencies
+works now with the cpufreq drivers 'acpi-cpufreq' and 'intel_pstate'.
+.SH OPTIONS
+.TP
+.B \-h
+prints a help message to standard output, then exits
+.TP
+.B \-p
+prints the current frequencies for all hardware threads
+.TP
+.B \-l
+prints all configurable frequencies
+.TP
+.B \-m
+prints all configurable governors
+.TP
+.B \-\^c <cpu_list>
+set the affinity domain where to set the frequencies. Common are N (Node), SX (Socket X), CX (Cache Group X) and MX (Memory Group X).
+For detailed information about affinity domains see
+.B likwid-pin(1)
+.TP
+.B \-\^g <governor>
+set the governor of all hardware threads inside the affinity domain. Current governors are ondemand, performance, turbo. Default is ondemand
+.TP
+.B \-\^f, \-\-\^freq <frequency>
+set a fixed frequency at all hardware threads inside the affinity domain. Implicitly sets 'userspace' governor for the hardware threads when using the acpi-cpufreq driver.
+.TP
+.B \-\^x, \-\-\^min <min_freq>
+set a fixed minimal frequency at all hardware threads inside the affinity domain. Can be used in combination with a dynamic governor.
+.TP
+.B \-\^y, \-\-\^max <max_freq>
+set a fixed maximal frequency at all hardware threads inside the affinity domain. Can be used in combination with a dynamic governor.
+.TP
+.B \-\^t, \-\-\^turbo <0|1>
+deactivates/activates Turbo mode for the specified hardware threads.
+.TP
+.B \-\-\^umin <uncore_min_freq>
+set the minimal frequency for the Uncore. There are no limits available, but
+.B likwid-setFrequencies
+allows the available minimal CPU frequency as minimal Uncore frequency. Only available for Intel architectures.
+.TP
+.B \-\-\^umax <uncore_max_freq>
+set the maximal frequency for the Uncore. There are no limits available, but
+.B likwid-setFrequencies
+allows the available maximal CPU frequency (with a single hardware thread and Turbo) as maximal Uncore frequency. Only available for Intel architectures.
+.TP
+.B \-\-\^reset
+resets the hardware threads to maximal range, deactivates Turbo mode and sets the
+governor to "performance", "conservative" or the last one in the governor list
+as fallback
+.TP
+.B \-\-\^ureset
+resets the Uncore to maximal range. It uses the minimally available CPU
+frequency as minimal Uncore frequency and the maximally achievable CPU frequency
+(single core, Turbo active) as maximal Uncore frequency.
+
+.SH AUTHOR
+Written by Thomas Gruber <thomas.roehl@googlemail.com>.
+.SH BUGS
+Report Bugs on <https://github.com/RRZE-HPC/likwid/issues>.
+.SH "SEE ALSO"
+likwid-pin(1), likwid-perfctr(1), likwid-powermeter(1)

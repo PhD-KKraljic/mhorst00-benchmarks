@@ -1,0 +1,54 @@
+Old LD_PRELOAD=likwid-appDaemon.so
+New LD_PRELOAD=
+Rocmon GPU string: 0
+Rocmon Event string: FLOPS_DP
+
+
+ NAS Parallel Benchmarks (NPB3.3.1-OCL) - MG Benchmark
+
+ Size:  128x 128x 128  (class W)
+ Iterations:   4
+
+ Initialization time:          0.6507 seconds
+
+  iter   1
+  iter   2
+  iter   3
+  iter   4
+
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ L2 Norm is  6.4673293753392E-06
+ Error is    1.9735867671025E-19
+
+
+ MG Benchmark Completed.
+ Class           =                        W
+ Size            =            128x 128x 128
+ Iterations      =                        4
+ Time in seconds =              0.004962528
+ Mop/s total     =                 98042.62
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              12 Jul 2023
+
+ Compile options:
+    CC           = gcc
+    CLINK        = $(CC)
+    C_LIB        = -lm -L/opt/rocm/opencl/lib -lOpenCL
+    C_INC        = -I../common -I/opt/rocm/include
+    CFLAGS       = -g -Wall -O3 -mcmodel=large -fopenmp
+    CLINKFLAGS   = -O3 -mcmodel=large -fopenmp
+
+ OpenCL options:
+    Device type  = CL_DEVICE_TYPE_GPU
+    Device name  = gfx90a:sramecc+:xnack-
+
+--------------------------------------
+ Please send all errors/feedbacks to:
+ Center for Manycore Programming
+ cmp@aces.snu.ac.kr
+ http://aces.snu.ac.kr
+--------------------------------------
+

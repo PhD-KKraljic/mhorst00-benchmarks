@@ -1,0 +1,16 @@
+Old LD_PRELOAD=likwid-appDaemon.so
+New LD_PRELOAD=
+Nvmon GPU string: 0
+Nvmon Event string: POWER
+WG size of kernel = 16 X 16
+Generate input matrix internally, size =4096
+Creating matrix internally size=4096
+num_devices = 1
+Create GPU context
+Init: 194.270996
+MemAlloc: 0.005000
+HtoD: 3.582976
+Exec: 23.355410
+DtoH: 4.386240
+Close: 0.157000
+Total: 235.093002

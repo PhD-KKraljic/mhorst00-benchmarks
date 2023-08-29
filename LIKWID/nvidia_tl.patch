@@ -1,0 +1,24 @@
+diff --git a/src/applications/likwid-perfctr.lua b/src/applications/likwid-perfctr.lua
+index 3768930d..57061b39 100644
+--- a/src/applications/likwid-perfctr.lua
++++ b/src/applications/likwid-perfctr.lua
+@@ -1118,8 +1118,17 @@ if #event_string_list > 0 then
+ end
+ ---------------------------
+ if nvSupported and #gpu_event_string_list > 0 then
+-    if likwid.nvInit(num_gpus, gpulist) < 0 then
+-        perfctr_exit(1)
++    if not use_timeline then
++        if likwid.nvInit(num_gpus, gpulist) < 0 then
++            perfctr_exit(1)
++        end
++    else
++        local preload = os.getenv("LD_PRELOAD")
++        if preload == nil then
++            likwid.setenv("LD_PRELOAD", "likwid-appDaemon.so")
++        else
++            likwid.setenv("LD_PRELOAD", "likwid-appDaemon.so" .. ":" .. preload)
++        end
+     end
+ end
+ ---------------------------

@@ -1,0 +1,224 @@
+The system is: Linux - 4.18.0-372.26.1.el8_6.x86_64 - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /packages/gcc/10.2.0/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/storage/users/kraljic/workspace/rocHPL/CMakeFiles/3.20.2/CompilerIdCXX/a.out"
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_60809/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_60809.dir/build.make CMakeFiles/cmTC_60809.dir/build
+gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o
+/packages/gcc/10.2.0/bin/c++   -v -o CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/packages/gcc/10.2.0/bin/c++
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 10.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/cc1plus -quiet -v -iprefix /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/ -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccRz0oqH.s
+GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 10.2.0, GMP version 6.1.2, MPFR version 3.1.6-p2, MPC version 1.0.2, isl version none
+warning: MPC header version 1.0.2 differs from library version 1.1.0.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"
+ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"
+ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"
+ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"
+ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"
+ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0
+ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu
+ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward
+ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include
+ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed
+ /usr/local/include
+ /storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include
+ /usr/include
+End of search list.
+GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 10.2.0, GMP version 6.1.2, MPFR version 3.1.6-p2, MPC version 1.0.2, isl version none
+warning: MPC header version 1.0.2 differs from library version 1.1.0.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: a95eb2a6ff8e07c3bfac1c10fa1262d6
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccRz0oqH.s
+GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8
+COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/
+LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+Linking CXX executable cmTC_60809
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60809.dir/link.txt --verbose=1
+/packages/gcc/10.2.0/bin/c++  -v CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_60809 
+Using built-in specs.
+COLLECT_GCC=/packages/gcc/10.2.0/bin/c++
+COLLECT_LTO_WRAPPER=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 10.2.0 (GCC) 
+COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/
+LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_60809' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccEp5M6S.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_60809 /lib/../lib64/crt1.o /lib/../lib64/crti.o /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_60809' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+gmake[1]: Leaving directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0]
+    add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu]
+    add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward]
+    add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include]
+    add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed]
+    add: [/usr/local/include]
+    add: [/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0] ==> [/storage/packages/gcc/10.2.0/include/c++/10.2.0]
+  collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu] ==> [/storage/packages/gcc/10.2.0/include/c++/10.2.0/x86_64-pc-linux-gnu]
+  collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward] ==> [/storage/packages/gcc/10.2.0/include/c++/10.2.0/backward]
+  collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include]
+  collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include] ==> [/storage/packages/gcc/10.2.0/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/storage/packages/gcc/10.2.0/include/c++/10.2.0;/storage/packages/gcc/10.2.0/include/c++/10.2.0/x86_64-pc-linux-gnu;/storage/packages/gcc/10.2.0/include/c++/10.2.0/backward;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed;/usr/local/include;/storage/packages/gcc/10.2.0/include;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_60809/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_60809.dir/build.make CMakeFiles/cmTC_60809.dir/build]
+  ignore line: [gmake[1]: Entering directory '/storage/users/kraljic/workspace/rocHPL/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/packages/gcc/10.2.0/bin/c++   -v -o CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/packages/gcc/10.2.0/bin/c++]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 10.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/cc1plus -quiet -v -iprefix /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/ -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccRz0oqH.s]
+  ignore line: [GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 10.2.0  GMP version 6.1.2  MPFR version 3.1.6-p2  MPC version 1.0.2  isl version none]
+  ignore line: [warning: MPC header version 1.0.2 differs from library version 1.1.0.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"]
+  ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"]
+  ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"]
+  ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"]
+  ignore line: [ignoring duplicate directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"]
+  ignore line: [ignoring nonexistent directory "/storage/packages/gcc/10.2.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0]
+  ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu]
+  ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward]
+  ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include]
+  ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /storage/packages/gcc/10.2.0/bin/../lib/gcc/../../include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++14 (GCC) version 10.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 10.2.0  GMP version 6.1.2  MPFR version 3.1.6-p2  MPC version 1.0.2  isl version none]
+  ignore line: [warning: MPC header version 1.0.2 differs from library version 1.1.0.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: a95eb2a6ff8e07c3bfac1c10fa1262d6]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccRz0oqH.s]
+  ignore line: [GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8]
+  ignore line: [COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking CXX executable cmTC_60809]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60809.dir/link.txt --verbose=1]
+  ignore line: [/packages/gcc/10.2.0/bin/c++  -v CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_60809 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/packages/gcc/10.2.0/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/packages/gcc/10.2.0 --with-mpc=/packages/mpc/1.0.2 --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 10.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_60809' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccEp5M6S.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_60809 /lib/../lib64/crt1.o /lib/../lib64/crti.o /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o]
+    arg [/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/storage/packages/gcc/10.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccEp5M6S.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_60809] ==> ignore
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o] ==> obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o]
+    arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0]
+    arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc]
+    arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..]
+    arg [CMakeFiles/cmTC_60809.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o] ==> obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o]
+  collapse obj [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0] ==> [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0]
+  collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc] ==> [/storage/packages/gcc/10.2.0/lib/gcc]
+  collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64] ==> [/storage/packages/gcc/10.2.0/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/storage/packages/gcc/10.2.0/bin/../lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> [/storage/packages/gcc/10.2.0/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o;/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/storage/packages/gcc/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0;/storage/packages/gcc/10.2.0/lib/gcc;/storage/packages/gcc/10.2.0/lib64;/lib64;/usr/lib64;/storage/packages/gcc/10.2.0/lib]
+  implicit fwks: []
+
+

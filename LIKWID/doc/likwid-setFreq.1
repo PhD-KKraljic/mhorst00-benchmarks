@@ -1,0 +1,32 @@
+.TH LIKWID-SETFREQ 1 <DATE> likwid\-<VERSION>
+.SH NAME
+likwid-setFreq \- Mediator for
+.B likwid-setFrequencies(1)
+that performs the actual setting of hardware thread's frequency and governor.
+.SH SYNOPSIS
+.B likwid-setFreq
+
+.SH OPTIONS
+.TP
+.B No options
+
+.SH DESCRIPTION
+.B likwid-setFreq
+is a command line application that mediates the request from
+.B likwid-setFrequencies(1)
+because setting a hardware thread's frequency and/or governor requires root privileges. When starting the daemon,
+it opens a UNIX socket and waits for connects from LIKWID. When the connection is established, the library
+can send commands to
+.B likwid-setFreq
+. The daemon is just used to change the sysfs files, the library accesses the files itself for reading
+to minimize overhead. This executable must be suid-root.
+.B likwid-setFreq
+works with the 'acpu_cpufreq' and the 'intel_pstate' driver. 
+
+
+.SH AUTHOR
+Written by Thomas Gruber <thomas.roehl@googlemail.com>.
+.SH BUGS
+Report Bugs on <https://github.com/RRZE-HPC/likwid/issues>.
+.SH "SEE ALSO"
+likwid-setFrequencies(1)

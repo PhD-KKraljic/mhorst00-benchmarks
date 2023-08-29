@@ -1,0 +1,261 @@
+# Changelog 5.2.0
+- Support for AMD Zen3 (Core + Uncore)
+- Support for Intel IcelakeSP (Core + Uncore)
+- New affinity code
+- Fix for Ivybridge uncore code
+- Bypass accessdaemon by using rdpmc instruction on x86_64
+- Introduce notion of CPU die in topology module
+- Use CPU dies for socket-lock for Intel CascadelakeAP
+- Add environment variable LIKWID_IGNORE_CPUSET to break out of current CPUset
+- Fixes for affinity module CPUlist sorting
+- Build against system-installed hwloc
+- Update for Intel SkylakeX/CascadelakeX L3 group
+- Rename DataFabric events for all generations of AMD Zen
+- Add static cache configuration for Fujitsu A64FX
+- Add multiplexing checks for perf_event backend
+- Fix for table width of likwid-topology afteradding CPU die column
+- Adding RasPi 4 with 32 bit OS as ARMv7
+- Add default groups for Intel Icelake desktop
+- Fix for likwid-setFrequencies to not apply minFreq when setting governor
+- likwid-powermeter: Fix hwthread selection when run with -p
+- likwid-setFrequencies: Get measured base frequency if register is not readable
+- CLOCK group for all AMD Zen
+- Fixes in Nvidia GPU support in NvMarkerAPI and topology module
+
+# Changelog 5.1.1
+- Support for Intel Cometlake desktop (Core + Uncore)
+- Fix for topology module of Fujitsu A64FX
+- Fix for Intel Skylake SP in SNC mode
+- Fix for likwid-perfscope
+- Fix for CLI argument parsing
+- Updated group and data file checkers
+- Vector sum benchmark in SVE
+- FP_PIPE group for Fujitsu A64FX
+- Maximal number of CLI arguments configurable in config.mk (currently 16384)
+
+# Changelog 5.1.0
+- Support for Intel Icelake desktop (Core + Uncore)
+- Support for Intel Icelake server (Core only)
+- Support for Intel Tigerlake desktop (Core only)
+- Support for Nvidia GPUs with compute capability >= 7.0 (CUpti Profiling API)
+- Support for Fujitsu A64FX (Core) including SVE assembly benchmarks
+- Support for ARM Neoverse N1 (AWS Graviton 2)
+- Support for AMD Zen3 (Core + Uncore but without any events)
+- Check for Intel HWP
+- Fix for TID filter of Skylake SP LLC filter0 register
+- Fix for Lua 5.1
+- Fix for likwid-mpirun skip masks
+- Fortran90 interface for NvMarkerAPI
+- CPU_is_online check to filter non-usable CPU cores
+
+# Changelog 5.0.2
+- Fix memory leak in calc_metric()
+- New peakflops benchmarks in likwid-bench
+- Fix for NUMA domain handling properly
+- Improvements for perf_event backend
+- Fix for perfctr and powermeter with perf_event backend
+- Fix for likwid-mpirun for SLURM with cpusets
+- Fix for likwid-setFrequencies in cpusets
+- Update for POWER9 event list
+- Updates for AMD Zen, Zen+ and Zen2 (events, groups)
+- Fix for Intel Uncore events with same name for different devices
+- Fix for file descriptor handling
+- Fix for compilation with GCC10
+- Remove sleep timer warning
+- Update examples C-markerAPI and C-internalMarkerAPI
+
+# Changelog 5.0.1
+- Some fixes for likwid-mpirun
+  - Fix for hybrid pinning with multiple hosts
+  - Fix for perf.groups without core-local events (switch to likwid-pin)
+  - Fix for command line parser
+  - For for mpiopts parameter
+  - Add UPMC as Uncore counter to splitUncoreEvents()
+  - Expand user-given input to abspath if possible
+  - Check for at least one executable in user-given command
+  - Add skip mask for SLURM + Intel OpenMP
+  - Check if user-given MPI type is available
+- Fix for perf_event backend when used as root
+- Inlude likwid-marker.h in likwid.h to not break old MarkerAPI code
+- Enable build with ARM HPC compiler (ARMCLANG compiler setting)
+- Fix creation of likwid-bench benchmarks on POWER platforms
+- Fix for build system in NVIDIA_INTERFACE=BUILD_APPDAEMON=true
+- Update for executable tester
+- Update for MPI+X test (X: OpenMP or Pthreads)
+
+# Changelog 5.0.0
+- Support for ARM architectures. Special support for Marvell Thunder X2
+- Support for IBM POWER architectures. Support for POWER8 and POWER9.
+- Support for AMD Zen2 microarchitecture.
+- Support for data fabric counters of AMD Zen microarchitecture
+- Support for Nvidia GPU monitoring (with NvMarkerAPI)
+- New clock frequency backend (with less overhead)
+- Generation of benchmarks for likwid-bench on-the-fly from ptt files
+- Switch back to C-based metric calculator (less overhead)
+- Interface function to performance groups, create your own.
+- Integration of GOTCHA for hooking into client application at runtime
+- Thread-local initialization of streams for likwid-bench
+- Enhanced support for SLURM with likwid-mpirun
+- New MPI and Hybrid pinning features for likwid-mpirun
+- Interface to enable the membind kernel memory policy
+- JSON output filter file (use -o output.json)
+- Update of internal HWLOC to 2.1.0
+
+
+# Changelog 4.3.4
+- Fix for detecting PCI devices if system can split up LLC and memory channels (Intel CoD or SNC)
+- Don't pin accessDaemon to threads to avoid long access latencies due to busy hardware thread
+- Fix for calculations in likwid-bench if streams are used for input and output
+- Fix for LIKWID_MARKER_REGISTER with perf_event backend
+- Support for Intel Atom (Tremont) (nothing new, same as Intel Atom (Goldmont Plus))
+- Workaround for topology detection if LLC and memory channels are split up. Kernel does not detect it properly sometimes. (Intel CoD or SNC)
+- Minor updates for build system
+- Minor updates for documentation
+
+# Changelog 4.3.3
+- Fixes for likwid-mpirun
+- Fixes for events of Intel Skylake SP and Intel Broadwell
+- Support for Intel CascadeLake X (only new eventlist, uses code from Intel Skylake SP)
+- Fix for bitmask creation in Lua
+- Event options for perf_event backend
+- New assembly benchmarks in likwid-bench
+- MarkerAPI: Function to reset regions
+- Some new performance groups (DIVIDE and TMA)
+- Fixes for AMD Zen performance groups
+- Fix when using topology input file
+- Minor bugfixes
+
+# Changelog 4.3.2
+- Fix in internal metric calculator
+- Support for Intel Knights Mill (core, rapl, uncore)
+- Intel Skylake X: Some fixes for events and perf. groups
+- Set KMP_INIT_AT_FORK to bypass bug in Intel OpenMP memory allocator
+- AMD Zen: Use RETIRED_INSTRUCTION instead of fixed-purpose counter for metric calculation
+- All FLOPS_* groups now have vectorization ratio
+- Fix for MarkerAPI with perf_event backend
+- Fix for maximal/minimal uncore frequency
+- Skip counters that are already in use, don't exit
+- likwid-mpirun: minor fix when overloading a host
+- Improved detection of PCI devices
+
+# Changelog 4.3.1
+- Fix for setting/getting turbo mode in frequency module
+- Exchanged two events in perf. groups of Intel Skylake X
+
+# Changelog 4.3.0
+- Support for Intel Skylake SP architecture (core, uncore, energy)
+- Support for AMD Zen architecture (core, l2, energy)
+- Pinning strategy 'balanced'
+
+# Changelog 4.2.1
+- Fix for logical selection strings
+- likwid-agent: general update
+- likwid-mpirun: Improved SLURM support
+- likwid-mpirun: Print metrics sorted as they are listen in perf. group
+- likwid-perfctr: Print metrics/events as header in timeline mode
+- likwid-setFrequency: Commandline options to set min, max and current frequency
+- Pinning-Library: Automatically detect and skip shepard threads
+- Intel Broadwell: Added support for E3 (like Desktop), Fix for L3 group
+- Intel IvyBridge: Fix for PCU fixed-purpose counters
+- Intel Skylake: Fix for events CYCLE_ACTIVITY, new event L2_LINES_OUT
+- Intel Xeon Phi (KNL): Fix for overflow register, Update for ENERGY group
+- Intel SandyBridge: Fix for L3CACHE group
+- Event/Counter list contains only usable counters and events
+
+# Changelog 4.2.0
+- Support for Intel Xeon Phi (Knights Landing): Core, Uncore, RAPL
+- Support for Uncore counters of some desktop chips (SandyBridge, IvyBridge,
+  Haswell, Broadwell and Skylake)
+- Basic support for Linux perf_event interface instead of native access.
+  Currently only core-local counters working, Uncore is experimental
+- Support to build against a existing Lua installation (5.1 - 5.3 tested)
+- Support for CPU frequency manipulation, Lua interface updated
+- Access module checks for LLNL's msr_safe kernel module
+- Support for counter registers that are only available when
+  HyperThreading is off
+- Fix for non-HyperThreading counters (PMC4-7) on Intel Broadwell
+- Socket measurements can be used for all cores on the socket in
+  metric formulas.
+- likwid-perfctr: Timeline mode without executable runs until user presses Ctrl+c
+- likwid-perfctr: New CYCLE_ACTIVITY groups
+- likwid-perfctr: New PORT_USAGE groups (only with deactivated HyperThreading)
+- likwid-perfctr: Regions are sorted in output as they are executed by the code
+- likwid-powermeter: Read Uncore frequency settings and performance energy bias
+- likwid-powermeter: Update of energy unit for DRAM domain for Intel
+                     Broadwell D/EP and Intel Xeon Phi (Knights Landing)
+- likwid-bench: Fix for 'cycles per update' metric
+- likwid-bench: Vector lengths are sanitized for thread count and loop stride
+- likwid-topology: Increase robustness
+- likwid-mpirun: Some fixes
+
+# Changelog 4.1.2
+- Fix for likwid-powermeter: Use proper energy unit
+- Fix for performance groups for Intel Broadwell (D/EP): DATA and FALSE_SHARE
+- Reduce number of started access daemons
+- Clean Uncore unit local control registers (needed for simultaneous use of LIKWID 3 and 4)
+- Clean config, filter and counter registers at *_finalize function
+- Fix for likwid-features and likwid-perfctr
+
+# Changelog 4.1.1
+- Fix for Uncore handling for EP/EN/EX systems
+- Minor fix for Uncore handling for Intel desktop systems
+- Fix in generic readCounters function
+- Support for Intel Goldmont (untested)
+- Fixes for likwid-mpirun
+
+# Changelog 4.1.0
+- Support for Intel Skylake (Core + Uncore)
+- Support for Intel Broadwell (Core + Uncore)
+- Support for Intel Broadwell D (Core + Uncore)
+- Support for Intel Broadwell EP/EN/EX (Core + Uncore)
+- Support for Intel Airmont (Core)
+- Uncore support for Intel SandyBridge, IvyBridge and Haswell
+- Performance group and event set handling in library
+- Internal calculator for derived metrics
+- Improvement of Marker API
+- Get results/metrics of last measurement cycle
+- Fixed most memory leaks
+- Respect 'Intel PMU sharing guide'
+- Update of internal Lua to 5.3
+- More examples (C++11 threads,Cilk+, TBB)
+- Test suite for executables and library
+- Accuracy checker supports multiple CPUs
+- Security checked access daemon
+- Likwid-bench supports Integer benchmarks
+- Likwid-bench selects interation count automatically
+- Likwid-bench has new FMA related benchmarks
+- Likwid-mpirun supports SLURM job scheduler
+- New tool likwid-features
+
+# Changelog 4.0.1
+- likwid-bench: Iteration determination is done serially
+- likwid-bench: Manual selection of iterations possible
+- likwid-perfctr: Set cpuset to all CPUs not only the first
+- likwid-pin: Set cpuset to all CPUs not only the first
+- likwid-accuracy.py: Enhanced plotting functions, use only instrumented likwid-bench
+- likwid-accessD: Check for allowed register for PCI accesses
+- Add models HASWELL_M1 (0x45) and HASWELL_M2 (0x46) to likwid-powermeter and likwid-accessD
+- New test application using Cilk and Marker API
+- New test application using C++11 threads and Marker API
+- likwid-agent: gmetric version check for --group option and s/\s*/_/ in metric names
+- likwid-powermeter: Print RAPL domain name
+- Marker API: Initialize access already at likwid_markerInit()
+- Marker API: likwid_markerThreadInit() only pins if not already pinned
+
+# Changelog 4.0.0
+
+- Support for Intel Broadwell
+- Uncore support for all Uncore-aware architectures
+    - Nehalem (EX)
+    - Westmere (EX)
+    - SandyBridge EP
+    - IvyBridge EP
+    - Haswell EP
+- Measure multiple event sets in a round-robin fashion (no multiplexing!)
+- Event options to filter the counter increments
+- Whole LIKWID functionality is exposed as API for C/C++ and Lua
+- New functions in the Marker API to switch event sets and get intermediate results
+- Topology code relies on hwloc. CPUID is still included but only as fallback
+- Most LIKWID applications are written in Lua (only exception likwid-bench)
+- Monitoring daemon likwid-agent with multiple output backends
+- More performance groups

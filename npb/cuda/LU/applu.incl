@@ -1,0 +1,1187 @@
+//-------------------------------------------------------------------------//
+//                                                                         //
+//  This benchmark is an CUDA® C version of the NPB LU code. This CUDA® C  //
+//  version is a part of SNU-NPB 2019 developed by the Center for Manycore //
+//  Programming at Seoul National University and derived from the serial   //
+//  Fortran versions in "NPB3.3.1-SER" developed by NAS.                   //
+//                                                                         //
+//  Permission to use, copy, distribute and modify this software for any   //
+//  purpose with or without fee is hereby granted. This software is        //
+//  provided "as is" without express or implied warranty.                  //
+//                                                                         //
+//  Information on original NPB 3.3.1, including the technical report, the //
+//  original specifications, source code, results and information on how   //
+//  to submit new results, is available at:                                //
+//                                                                         //
+//           http://www.nas.nasa.gov/Software/NPB/                         //
+//                                                                         //
+//  Information on SNU-NPB 2019, including the conference paper and source //
+//  code, is available at:                                                 //
+//                                                                         //
+//           http://aces.snu.ac.kr                                         //
+//                                                                         //
+//  Send comments or suggestions for this CUDA® C version to               //
+//  snunpb@aces.snu.ac.kr                                                  //
+//                                                                         //
+//          Center for Manycore Programming                                //
+//          School of Computer Science and Engineering                     //
+//          Seoul National University                                      //
+//          Seoul 08826, Korea                                             //
+//                                                                         //
+//          E-mail: snunpb@aces.snu.ac.kr                                  //
+//                                                                         //
+//-------------------------------------------------------------------------//
+
+//-------------------------------------------------------------------------//
+// Authors: Youngdong Do, Hyung Mo Kim, Pyeongseok Oh, Daeyoung Park,      //
+//          and Jaejin Lee                                                 //
+//-------------------------------------------------------------------------//
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
+//---  applu.incl   
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
+
+//---------------------------------------------------------------------
+// npbparams.h defines parameters that depend on the class and 
+// number of nodes
+//---------------------------------------------------------------------
+#ifndef __APPLU_INCL__
+#define __APPLU_INCL__
+
+#include "npbparams.h"
+#include "type.h"
+
+#define max(x, y) ((x > y) ? x : y)
+#define min(x, y) ((x < y) ? x : y)
+
+//---------------------------------------------------------------------
+// parameters which can be overridden in runtime config file
+// isiz1,isiz2,isiz3 give the maximum size
+// ipr = 1 to print out verbose information
+// omega = 2.0 is correct for all classes
+// tolrsd is tolerance levels for steady state residuals
+//---------------------------------------------------------------------
+#define IPR_DEFAULT     1
+#define OMEGA_DEFAULT   1.2
+#define TOLRSD1_DEF     1.0e-08
+#define TOLRSD2_DEF     1.0e-08
+#define TOLRSD3_DEF     1.0e-08
+#define TOLRSD4_DEF     1.0e-08
+#define TOLRSD5_DEF     1.0e-08
+
+#define C1              1.40e+00
+#define C2              0.40e+00
+#define C3              1.00e-01
+#define C4              1.00e+00
+#define C5              1.40e+00
+
+//---------------------------------------------------------------------
+// grid
+//---------------------------------------------------------------------
+/* common/cgcon/ */
+extern double dxi, deta, dzeta;
+extern double tx1, tx2, tx3;
+extern double ty1, ty2, ty3;
+extern double tz1, tz2, tz3;
+extern int nx, ny, nz;
+extern int nx0, ny0, nz0;
+extern int ist, iend;
+extern int jst, jend;
+extern int ii1, ii2;
+extern int ji1, ji2;
+extern int ki1, ki2;
+
+//---------------------------------------------------------------------
+// dissipation
+//---------------------------------------------------------------------
+/* common/disp/ */
+extern double dx1, dx2, dx3, dx4, dx5;
+extern double dy1, dy2, dy3, dy4, dy5;
+extern double dz1, dz2, dz3, dz4, dz5;
+extern double dssp;
+
+//---------------------------------------------------------------------
+// field variables and residuals
+// to improve cache performance, second two dimensions padded by 1 
+// for even number sizes only.
+// Note: corresponding array (called "v") in routines blts, buts, 
+// and l2norm are similarly padded
+//---------------------------------------------------------------------
+/* common/cvar/ */
+extern double u    [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1][5];
+extern double rsd  [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1][5];
+extern double frct [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1][5];
+extern double flux [ISIZ1][5];
+extern double qs   [ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1];
+extern double rho_i[ISIZ3][ISIZ2/2*2+1][ISIZ1/2*2+1];
+
+//---------------------------------------------------------------------
+// output control parameters
+//---------------------------------------------------------------------
+/* common/cprcon/ */
+extern int ipr, inorm;
+
+//---------------------------------------------------------------------
+// newton-raphson iteration control parameters
+//---------------------------------------------------------------------
+/* common/ctscon/ */
+extern double dt, omega, tolrsd[5], rsdnm[5], errnm[5], frc, ttotal;
+extern int itmax, invert;
+
+/* common/cjac/ */
+extern double a[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double b[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double c[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double d[ISIZ2][ISIZ1/2*2+1][5][5];
+
+/* common/cjacu/ */
+extern double au[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double bu[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double cu[ISIZ2][ISIZ1/2*2+1][5][5];
+extern double du[ISIZ2][ISIZ1/2*2+1][5][5];
+
+
+//---------------------------------------------------------------------
+// coefficients of the exact solution
+//---------------------------------------------------------------------
+/* common/cexact/ */
+extern double ce[5][13];
+
+//---------------------------------------------------------------------
+// pintgr() - segmentation fault
+//---------------------------------------------------------------------
+extern double phi1[ISIZ3+2][ISIZ2+2];
+extern double phi2[ISIZ3+2][ISIZ2+2];
+
+//---------------------------------------------------------------------
+// timers
+//---------------------------------------------------------------------
+/* common/timer/ */
+extern double maxtime;
+extern logical timeron;
+#define t_total   1
+#define t_rhsx    2
+#define t_rhsy    3
+#define t_rhsz    4
+#define t_rhs     5
+#define t_jacld   6
+#define t_blts    7
+#define t_jacu    8
+#define t_buts    9
+#define t_add     10
+#define t_l2norm  11
+#define t_last    11
+
+
+
+//-----------------------------------------------------------------------
+// CUDA - define
+//-----------------------------------------------------------------------
+#define t_jbl_KL_prof 20
+#define t_jbl_BR_prof 21
+#define t_jbu_KL_prof 22
+#define t_jbu_BR_prof 23
+
+//#define DETAIL_INFO
+
+#ifdef DETAIL_INFO
+#define DETAIL_LOG(fmt, ...) fprintf(stdout, " [CUDA Detailed Info] " fmt "\n", ## __VA_ARGS__)
+#else
+#define DETAIL_LOG(fmt, ...) 
+#endif
+
+// Command Queue Types - default queue is kernel queue 
+#define KERNEL_Q  0
+#define DATA_Q    1
+#define NUM_Q     2
+
+#include <cuda_runtime.h>
+#include "cuda_util.h"
+
+//-----------------------------------------------------------------------
+// CUDA - Variables
+//-----------------------------------------------------------------------
+
+/* CUDA environment variables */
+extern int                  device;
+extern cudaStream_t         cmd_q[NUM_Q];
+
+/* CUDA memory objects and sizes of them */
+extern double               *m_sum1, 
+                            *m_sum2, 
+                            *m_u_prev,
+                            *m_r_prev,
+                            *m_rsd[2], 
+                            *m_u[2], 
+                            *m_frct[2], 
+                            *m_qs[2], 
+                            *m_rho_i[2];
+
+/* CUDA memory objects for baseline optimization */ 
+extern double               *m_flux,
+                            *m_utmp,
+                            *m_rtmp,
+                            *m_tmp_sum,
+                            *m_a,
+                            *m_b,
+                            *m_c,
+                            *m_d;
+
+extern size_t               u_buf_size,
+                            rsd_buf_size,
+                            frct_buf_size,
+                            qs_buf_size,
+                            rho_i_buf_size,
+                            u_prev_buf_size,
+                            r_prev_buf_size;
+
+extern const size_t         u_slice_size,
+                            rsd_slice_size,
+                            frct_slice_size,
+                            qs_slice_size,
+                            rho_i_slice_size,
+                            u_prev_slice_size,
+                            r_prev_slice_size;
+
+/* baseline memory objects sizes */
+const extern size_t         flux_slice_size,
+                            utmp_slice_size,
+                            rtmp_slice_size,
+                            tmp_sum_slice_size,
+                            a_slice_size,
+                            b_slice_size,
+                            c_slice_size,
+                            d_slice_size;
+
+extern size_t               flux_buf_size,
+                            utmp_buf_size,
+                            rtmp_buf_size,
+                            tmp_sum_buf_size,
+                            a_buf_size,
+                            b_buf_size,
+                            c_buf_size,
+                            d_buf_size;
+
+/* CUDA profiling variables */
+extern cudaEvent_t          (*loop2_ev_copy_u_prev)[2],
+                            (*loop2_ev_copy_r_prev)[2],
+                            (*loop2_ev_copy_u)[2],
+                            (*loop2_ev_copy_rsd)[2],
+                            ev_k_l2norm_head1[2],
+                            ev_k_l2norm_head2[2],
+                            (*ev_k_l2norm_body1)[2],
+                            (*ev_k_l2norm_body2)[2],
+                            ev_d_l2norm_tail1[2],
+                            ev_d_l2norm_tail2[2];
+
+/* CUDA dynamic configuration flags */
+extern int                  split_flag;
+extern int                  buffering_flag;
+
+/* CUDA device dependent variables */
+extern int                  max_compute_units;
+extern int                  max_work_item_sizes[3];
+extern size_t               max_work_group_size;
+extern size_t               local_mem_size;
+extern size_t               gmem_size;
+extern size_t               max_mem_alloc_size;
+extern size_t               l2norm_lws, 
+                            l2norm_gws, 
+                            l2norm_wg_num,
+                            rhsy_lws[2], 
+                            rhsz_lws[2],
+                            jacld_blts_lws, 
+                            jacu_buts_lws;
+
+extern int                  work_num_item_default;
+extern int                  loop1_work_max_iter, loop2_work_max_iter;
+extern size_t               loop1_work_num_item_default, loop2_work_num_item_default; 
+
+/* Wave propagation variables */
+extern int                  block_size, block_size_k;
+
+/* Reduction variables */
+extern double               (* g_sum1)[5], (* g_sum2)[5];
+
+enum OptLevel {
+  OPT_BASELINE=0,
+  OPT_PARALLEL,
+  OPT_GLOBALMEM,
+  OPT_MEMLAYOUT,
+  OPT_SYNC,
+  OPT_FULL
+};
+
+extern enum OptLevel  g_opt_level;
+
+/* Wave Propagation Algorithm */
+enum PropSyncAlgo{
+  KERNEL_LAUNCH,
+  BARRIER
+};
+
+
+void ssor_alloc_ev1(int iter);
+void ssor_alloc_ev2(int iter);
+
+void read_input();
+void domain();
+void setcoeff();
+void setbv();
+void exact(int i, int j, int k, double u000ijk[]);
+void setiv();
+void erhs();
+
+void ssor(int niter);
+void ssor_init(int loop1_iter, int loop2_iter);
+void ssor_release(int loop1_iter, int loop2_iter);
+
+void rhs();
+cudaEvent_t* rhs_body(int work_step, 
+                      int work_base, 
+                      int work_num_item, 
+                      int copy_buffer_base, 
+                      int copy_num_item, 
+                      cudaEvent_t* ev_wb_ptr);
+void rhs_init(int iter);
+void rhs_release(int iter);
+
+
+void l2norm(int ldx, int ldy, int ldz, int nx0, int ny0, int nz0,
+            int ist, int iend, int jst, int jend,
+            double sum[5], double * m_v);
+
+void l2norm_init(int iter);
+void l2norm_release(int iter);
+
+void l2norm_head(double sum[5], 
+                 double (* g_sum)[5], 
+                 double *m_sum, 
+                 cudaEvent_t *ev_k_start_ptr,
+                 cudaEvent_t *ev_k_end_ptr);
+
+void l2norm_body(int step, int iter,
+                 int base, int item,
+                 cudaEvent_t *ev_wb_ptr,
+                 cudaEvent_t *ev_kernel_start_ptr,
+                 cudaEvent_t *ev_kernel_end_ptr,
+                 double * m_sum, int nz0,
+                 int jst, int jend, 
+                 int ist, int iend);
+
+void l2norm_tail(double sum[5], 
+                 double (* g_sum)[5], 
+                 double* m_sum, 
+                 int nx0, int ny0, int nz0, 
+                 cudaEvent_t *ev_d_start_ptr,
+                 cudaEvent_t *ev_d_end_ptr);
+
+void jacld_blts_init(int iter, int item_default,
+                     int blk_size_k, int blk_size);
+
+void jacld_blts_release(int iter);
+
+cudaEvent_t* jacld_blts_body(int work_step, 
+                             int work_max_iter, 
+                             int work_base, 
+                             int work_num_item);
+
+void jacu_buts_init(int iter, int item_default,
+                    int blk_size_k, int blk_size);
+
+void jacu_buts_release(int iter);
+
+void jacu_buts_body(int work_step, 
+                    int work_max_iter, 
+                    int work_num_item, 
+                    int next_work_num_item, 
+                    int temp_kst, 
+                    int temp_kend,
+                    cudaEvent_t * ev_wb_ptr);
+
+void error();
+void pintgr();
+void verify(double xcr[5], double xce[5], double xci, 
+            char *Class, logical *verified);
+
+
+/* cuda kernel functions */
+
+/* ssor cuda kernel functions */
+__global__ 
+void k_ssor1_baseline(double * m_rsd,
+                      int nz,
+                      int jst,
+                      int jend,
+                      int ist,
+                      int iend,
+                      double dt,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag);
+__global__ 
+void k_ssor2_baseline(double *m_u,
+                      double *m_rsd,
+                      double tmp2,
+                      int nz,
+                      int jst,
+                      int jend,
+                      int ist,
+                      int iend,
+                      int temp_kst,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag);
+
+
+/* jacld blts cuda kernel fucnctions */
+
+// baseline
+__global__
+void k_jbl_datagen_baseline(double *m_u, 
+                            double *m_qs,
+                            double *m_rho_i,
+                            int kend, int jend, int iend, 
+                            int work_base, 
+                            int work_num_item);
+__global__
+void k_jbl_datacopy_baseline(double *m_rsd, 
+                             double *m_rsd_next,
+                             double *m_u, 
+                             double *m_u_next,
+                             int jst, int jend, 
+                             int ist, int iend, 
+                             int work_num_item);
+__global__
+void k_jacld_baseline(double *m_rsd,
+                      double *m_u,
+                      double *m_qs,
+                      double *m_rho_i,
+                      double *m_a,
+                      double *m_b,
+                      double *m_c,
+                      double *m_d,
+                      int nz, int ny, int nx,
+                      int jst, int jend, 
+                      int ist, int iend, 
+                      int temp_kst, int temp_kend);
+__global__
+void k_blts_KL_baseline(double *m_rsd,
+                        double *m_u,
+                        double *m_qs,
+                        double *m_rho_i,
+                        double *m_a,
+                        double *m_b,
+                        double *m_c,
+                        double *m_d,
+                        int nz, int ny, int nx,
+                        int wf_sum, 
+                        int wf_base_k, 
+                        int wf_base_j,
+                        int jst, int jend, 
+                        int ist, int iend, 
+                        int temp_kst, int temp_kend);
+// gmem
+__global__ 
+void k_jbl_datagen_gmem(double *m_u, 
+                        double *m_qs,
+                        double *m_rho_i,
+                        int kend, int jend, int iend, 
+                        int work_base, 
+                        int work_num_item);
+__global__ 
+void k_jbl_datacopy_gmem(double *m_rsd, 
+                         double *m_rsd_next,
+                         double *m_u, 
+                         double *m_u_next,
+                         int jst, int jend,
+                         int ist, int iend, 
+                         int work_num_item);
+__global__ 
+void k_jbl_KL_gmem(double *m_rsd,
+                   double *m_u,
+                   double *m_qs,
+                   double *m_rho_i,
+                   int nz, int ny, int nx,
+                   int wf_sum, 
+                   int wf_base_k, 
+                   int wf_base_j,
+                   int jst, int jend, 
+                   int ist, int iend, 
+                   int temp_kst, int temp_kend);
+
+// sync
+__global__
+void k_jbl_datagen_sync(double *m_u, 
+                        double *m_qs,
+                        double *m_rho_i,
+                        int kend, int jend, int iend, 
+                        int work_base, 
+                        int work_num_item);
+__global__
+void k_jbl_datacopy_sync(double *m_rsd, 
+                         double *m_rsd_next,
+                         double *m_u, 
+                         double *m_u_next,
+                         int jst, int jend, 
+                         int ist, int iend, 
+                         int work_num_item);
+__global__ 
+void k_blts_BR_sync(double *m_v, 
+                    double *m_rho_i,
+                    double *m_u, 
+                    double *m_qs,
+                    double *m_a,
+                    double *m_b,
+                    double *m_c,
+                    double *m_d,
+                    int kst, int kend, 
+                    int jst, int jend, 
+                    int ist, int iend,
+                    int wg00_head_k, 
+                    int wg00_head_j, 
+                    int wg00_head_i, 
+                    int wg00_block_k, 
+                    int wg00_block_j, 
+                    int wg00_block_i, 
+                    int num_block_k, 
+                    int num_block_j, 
+                    int num_block_i, 
+                    int block_size,
+                    int block_size_k);
+
+__global__ 
+void k_jacld_sync(double *m_rsd,
+                  double *m_u,
+                  double *m_qs,
+                  double *m_rho_i,
+                  double *m_a,
+                  double *m_b,
+                  double *m_c,
+                  double *m_d,
+                  int nz, int ny, int nx,
+                  int jst, int jend, 
+                  int ist, int iend, 
+                  int temp_kst, int temp_kend);
+__global__ 
+void k_blts_KL_sync(double *m_rsd,
+                    double *m_u,
+                    double *m_qs,
+                    double *m_rho_i,
+                    double *m_a,
+                    double *m_b,
+                    double *m_c,
+                    double *m_d,
+                    int nz, int ny, int nx,
+                    int wf_sum, 
+                    int wf_base_k, 
+                    int wf_base_j,
+                    int jst, int jend, 
+                    int ist, int iend, 
+                    int temp_kst, int temp_kend);
+// full opt
+__global__
+void k_jacld_blts_data_gen_fullopt(double *m_u, 
+                                   double *m_qs,
+                                   double *m_rho_i,
+                                   int kend, int jend, int iend, 
+                                   int work_base, 
+                                   int work_num_item);
+__global__ 
+void k_jacld_blts_BR_fullopt(double *m_v, double *m_rho_i,
+                             double *m_u, double *m_qs,
+                             int kst, int kend, 
+                             int jst, int jend, 
+                             int ist, int iend,
+                             int wg00_head_k, int wg00_head_j, 
+                             int wg00_head_i, 
+                             int wg00_block_k, int wg00_block_j, 
+                             int wg00_block_i, 
+                             int num_block_k, int num_block_j, 
+                             int num_block_i, 
+                             int block_size, int block_size_k);
+__global__ 
+void k_jacld_blts_data_copy_fullopt(double *m_rsd, 
+                                    double *m_rsd_next,
+                                    double *m_u, 
+                                    double *m_u_next,
+                                    int jst, int jend, 
+                                    int ist, int iend, 
+                                    int work_num_item);
+__global__ 
+void k_jacld_blts_KL_fullopt(double *m_rsd,
+                             double *m_u,
+                             double *m_qs,
+                             double *m_rho_i,
+                             int nz, int ny, int nx,
+                             int wf_sum, 
+                             int wf_base_k, 
+                             int wf_base_j,
+                             int jst, int jend, 
+                             int ist, int iend, 
+                             int temp_kst, int temp_kend);
+
+/* rhs cuda kernel fucntions */ 
+
+// baseline
+__global__
+void k_rhs1_baseline(double *m_rsd, 
+                     double *m_frct, 
+                     int nx, int ny, int nz,
+                     int work_base, 
+                     int work_num_item, 
+                     int split_flag);
+__global__
+void k_rhs1_datagen_baseline(double *m_u, 
+                             double *m_rho_i,
+                             double *m_qs, 
+                             int nx, int ny, int nz,
+                             int u_copy_buffer_base, 
+                             int u_copy_num_item);
+__global__
+void k_rhsx_baseline(double *m_flux,
+                     double *m_u,
+                     double *m_rho_i,
+                     double *m_qs,
+                     double *m_rsd,
+                     int jst, int jend,
+                     int ist, int iend,
+                     int nz, int nx,  
+                     double tx1, double tx2,
+                     double tx3,
+                     double dx1, double dx2,
+                     double dx3, double dx4,
+                     double dx5,
+                     double dssp,
+                     int work_base,
+                     int work_num_item,
+                     int split_flag);
+__global__
+void k_rhsy_baseline(double *m_flux,
+                     double *m_u,
+                     double *m_rho_i,
+                     double *m_qs,
+                     double *m_rsd,
+                     double ty1, double ty2,
+                     double ty3,
+                     double dy1, double dy2,
+                     double dy3, double dy4,
+                     double dy5,
+                     double dssp,
+                     int nz, int ny,
+                     int jst, int jend,
+                     int ist, int iend,
+                     int work_base,
+                     int work_num_item,
+                     int split_flag);
+__global__
+void k_rhsz_baseline(double *m_flux,
+                     double *m_utmp,
+                     double *m_rtmp,
+                     double *m_u,
+                     double *m_rho_i,
+                     double *m_qs,
+                     double *m_rsd,
+                     double tz1, double tz2,
+                     double tz3,
+                     double dz1, double dz2,
+                     double dz3, double dz4,
+                     double dz5,
+                     double dssp,
+                     int nz,
+                     int jst, int jend,
+                     int ist, int iend,
+                     int work_base,
+                     int work_num_item,
+                     int split_flag,
+                     const int WORK_NUM_ITEM_DEFAULT);
+
+// global memory optimization
+__global__
+void k_rhs1_gmem(double *m_rsd, 
+                 double * m_frct, 
+                 int nx, int ny, int nz,
+                 int work_base, 
+                 int work_num_item, 
+                 int split_flag);
+__global__
+void k_rhs1_datagen_gmem(double *m_u, 
+                         double *m_rho_i,
+                         double *m_qs, 
+                         int nx, int ny, int nz,
+                         int u_copy_buffer_base, 
+                         int u_copy_num_item);
+__global__
+void k_rhsx_gmem(double *m_u, 
+                 double *m_rho_i,
+                 double *m_qs, 
+                 double *m_rsd,
+                 int jst, int jend, 
+                 int ist, int iend,
+                 double tx1, double tx2, 
+                 double tx3, 
+                 double dx1, double dx2, 
+                 double dx3, double dx4, 
+                 double dx5,
+                 double dssp, 
+                 int nx, int nz,
+                 int work_base, 
+                 int work_num_item, 
+                 int split_flag);
+__global__
+void k_rhsy_gmem(double *m_u, 
+                 double *m_rho_i,
+                 double *m_qs, 
+                 double *m_rsd,
+                 int ist, int iend, 
+                 double ty1, double ty2, 
+                 double ty3,
+                 double dy1, double dy2, 
+                 double dy3, double dy4, 
+                 double dy5,
+                 double dssp, 
+                 int ny, int nz, 
+                 int work_base, 
+                 int work_num_item,
+                 int split_flag);
+__global__
+void k_rhsz_gmem(double *m_u, 
+                 double *m_rho_i,
+                 double *m_qs, 
+                 double * m_rsd,
+                 int jst, int jend, 
+                 int ist, int iend,
+                 double tz1, double tz2, 
+                 double tz3,
+                 double dz1, double dz2, 
+                 double dz3, double dz4, 
+                 double dz5,
+                 double dssp, int nz, 
+                 int work_base, 
+                 int work_num_item, 
+                 int split_flag);
+// parallel
+__global__
+void k_rhs1_parallel(double *m_rsd, 
+                     double *m_frct, 
+                     int nx, int ny, int nz,
+                     int work_base, 
+                     int work_num_item, 
+                     int split_flag);
+__global__
+void k_rhs1_datagen_parallel(double *m_u, 
+                             double *m_rho_i,
+                             double *m_qs, 
+                             int nx, int ny, int nz,
+                             int u_copy_buffer_base, 
+                             int u_copy_num_item);
+__global__
+void k_rhsx1_parallel(double *m_flux,
+                      double *m_u,
+                      double *m_rho_i, 
+                      double *m_qs,
+                      double *m_rsd,
+                      int jst, int jend, 
+                      int ist, int iend,
+                      double tx2, int nz,
+                      int work_base, 
+                      int work_num_item, 
+                      int split_flag);
+__global__
+void k_rhsx2_parallel(double *m_flux,
+                      double *m_u, 
+                      double *m_rsd,
+                      double *m_rho_i,
+                      int jst, int jend, 
+                      int ist, int iend, 
+                      double tx1, double tx2, double tx3, 
+                      double dx1, double dx2, 
+                      double dx3, double dx4, 
+                      double dx5,
+                      int nx, int nz,
+                      int work_base, 
+                      int work_num_item, 
+                      int split_flag);
+__global__
+void k_rhsx3_parallel(double *m_u,
+                      double *m_rsd,
+                      int jst, int jend,
+                      double dssp, int nx, int nz,
+                      int work_base, 
+                      int work_num_item, 
+                      int split_flag);
+__global__
+void k_rhsy_parallel(double *m_flux,
+                     double *m_u,
+                     double *m_rho_i,
+                     double *m_qs,
+                     double *m_rsd,
+                     double ty1, double ty2,
+                     double ty3,
+                     double dy1, double dy2,
+                     double dy3, double dy4,
+                     double dy5,
+                     double dssp,
+                     int nz, int ny,
+                     int jst, int jend,
+                     int ist, int iend,
+                     int work_base,
+                     int work_num_item,
+                     int split_flag);
+
+__global__
+void k_rhsz1_parallel(double *m_utmp,
+                      double *m_u,
+                      double *m_rho_i,
+                      int nz,
+                      int jst, int jend,
+                      int ist, int iend,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag,
+                      const int WORK_NUM_ITEM_DEFAULT);
+
+__global__
+void k_rhsz2_parallel(double *m_flux,
+                      double *m_utmp,
+                      double *m_qs,
+                      int nz,
+                      int jst, int jend,
+                      int ist, int iend,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag,
+                      const int WORK_NUM_ITEM_DEFAULT);
+
+__global__
+void k_rhsz3_parallel(double *m_flux,
+                      double *m_rtmp,
+                      double *m_rsd,
+                      double tz2,
+                      int nz,
+                      int jst, int jend,
+                      int ist, int iend,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag,
+                      const int WORK_NUM_ITEM_DEFAULT);
+
+__global__
+void k_rhsz4_parallel(double *m_flux,
+                      double *m_utmp,
+                      double tz3,
+                      int nz,
+                      int jst, int jend,
+                      int ist, int iend,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag,
+                      const int WORK_NUM_ITEM_DEFAULT);
+
+__global__
+void k_rhsz5_parallel(double *m_flux,
+                      double *m_utmp,
+                      double *m_rtmp,
+                      double tz1, double tz3,
+                      double dz1, double dz2,
+                      double dz3, double dz4,
+                      double dz5,
+                      int nz,
+                      int jst, int jend,
+                      int ist, int iend,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag,
+                      const int WORK_NUM_ITEM_DEFAULT);
+
+__global__
+void k_rhsz6_parallel(double *m_utmp,
+                      double *m_rtmp,
+                      double *m_rsd,
+                      double dssp,
+                      int nz,
+                      int jst, int jend,
+                      int ist, int iend,
+                      int work_base,
+                      int work_num_item,
+                      int split_flag,
+                      const int WORK_NUM_ITEM_DEFAULT);
+
+__global__
+void k_rhsz_parallel(double *m_flux,
+                     double *m_utmp,
+                     double *m_rtmp,
+                     double *m_u,
+                     double *m_rho_i,
+                     double *m_qs,
+                     double *m_rsd,
+                     double tz1, double tz2,
+                     double tz3,
+                     double dz1, double dz2,
+                     double dz3, double dz4,
+                     double dz5,
+                     double dssp,
+                     int nz,
+                     int jst, int jend,
+                     int ist, int iend,
+                     int work_base,
+                     int work_num_item,
+                     int split_flag,
+                     const int WORK_NUM_ITEM_DEFAULT);
+
+// fullopt
+__global__ 
+void k_rhs1_fullopt(double *m_rsd,  double *m_frct, 
+                    int nx, int ny, int nz,
+                    int work_base, 
+                    int work_num_item, 
+                    int split_flag);
+__global__ 
+void k_rhs1_data_gen_fullopt(double *m_u,  double *m_rho_i,
+                             double *m_qs, 
+                             int nx, int ny, int nz,
+                             int u_copy_buffer_base, 
+                             int u_copy_num_item);
+__global__ 
+void k_rhsx1_fullopt(double *m_u, double *m_rho_i,
+                     double * m_qs, double *m_rsd,
+                     int jst, int jend, 
+                     int ist, int iend,
+                     double tx2, int nz,
+                     int work_base, 
+                     int work_num_item, 
+                     int split_flag);
+__global__ 
+void k_rhsx2_fullopt(double *m_u,  double *m_rsd,
+                     double *m_rho_i,
+                     int jst, int jend, 
+                     int ist, int iend, 
+                     double tx1, double tx2, 
+                     double tx3, 
+                     double dx1, double dx2, 
+                     double dx3, double dx4, 
+                     double dx5,
+                     int nx, int nz,
+                     int work_base, 
+                     int work_num_item, 
+                     int split_flag);
+__global__ 
+void k_rhsx3_fullopt(double *m_u, double *m_rsd,
+                     int jst, int jend,
+                     double dssp, int nx, int nz,
+                     int work_base, 
+                     int work_num_item, 
+                     int split_flag);
+__global__ 
+void k_rhsy_fullopt(double *m_u, double *m_rho_i,
+                    double *m_qs, double *m_rsd,
+                    int ist, int iend, 
+                    double ty1, double ty2, 
+                    double ty3,
+                    double dy1, double dy2, 
+                    double dy3, double dy4, 
+                    double dy5,
+                    double dssp, int ny, int nz, 
+                    int work_base, 
+                    int work_num_item,
+                    int split_flag);
+__global__ 
+void k_rhsz_fullopt(double *m_u, double *m_rho_i,
+                    double *m_qs, double *m_rsd,
+                    int jst, int jend, 
+                    int ist, int iend,
+                    double tz1, double tz2, 
+                    double tz3,
+                    double dz1, double dz2, 
+                    double dz3, double dz4, 
+                    double dz5,
+                    double dssp, int nz, 
+                    int work_base, 
+                    int work_num_item, 
+                    int split_flag);
+
+
+
+/* l2norm cuda kernel functions */
+__global__ 
+void k_l2norm_head(double *m_sum, int wg_num);
+
+// baseline
+__global__
+void k_l2norm_baseline(double *m_v,
+                       double *m_sum,
+                       double *m_tmp_sum,
+                       int nz0,
+                       int jst, int jend,
+                       int ist, int iend,
+                       int work_base,
+                       int work_num_item, 
+                       int split_flag,
+                       int buffer_base);
+// global memory opt
+__global__ 
+void k_l2norm_gmem(double *m_v, double *m_sum,
+                   int nz0, int jst, int jend, 
+                   int ist, int iend, 
+                   int work_base, int work_num_item, 
+                   int split_flag, int buffer_base);
+
+/* jacu buts cuda kernel fuction */
+
+// baseline
+__global__
+void k_jbu_datagen_baseline(double *m_u, 
+                            double *m_qs,
+                            double *m_rho_i, 
+                            int jst, int jend, 
+                            int ist, int iend,
+                            int temp_kst, 
+                            int temp_kend, 
+                            int work_num_item);
+__global__
+void k_jacu_baseline(double *m_rsd,
+                     double *m_u,
+                     double *m_qs,
+                     double *m_rho_i,
+                     double *m_au,
+                     double *m_bu,
+                     double *m_cu,
+                     double *m_du,
+                     int nz, int ny, int nx,
+                     int jst, int jend, 
+                     int ist, int iend, 
+                     int temp_kst, int temp_kend);
+__global__
+void k_buts_KL_baseline(double *m_rsd,
+                        double *m_u,
+                        double *m_qs,
+                        double *m_rho_i,
+                        double *m_au,
+                        double *m_bu,
+                        double *m_cu,
+                        double *m_du,
+                        int nz, int ny, int nx,
+                        int wf_sum, int wf_base_k, int wf_base_j,
+                        int jst, int jend, 
+                        int ist, int iend, 
+                        int temp_kst, int temp_kend);
+// gmem
+__global__
+void k_jbu_datagen_gmem(double *m_u, 
+                        double *m_qs,
+                        double *m_rho_i, 
+                        int jst, int jend, 
+                        int ist, int iend,
+                        int temp_kst, 
+                        int temp_kend, 
+                        int work_num_item);
+__global__
+void k_jbu_KL_gmem(double *g_rsd,
+                   double *g_u,
+                   double *g_qs,
+                   double *g_rho_i,
+                   int nz, int ny, int nx,
+                   int wf_sum, int wf_base_k, int wf_base_j,
+                   int jst, int jend, 
+                   int ist, int iend, 
+                   int temp_kst, int temp_kend);
+
+// sync
+__global__
+void k_jbu_datagen_sync(double *m_u, 
+                        double *m_qs,
+                        double *m_rho_i, 
+                        int jst, int jend, 
+                        int ist, int iend,
+                        int temp_kst, 
+                        int temp_kend, 
+                        int work_num_item);
+__global__
+void k_buts_BR_sync(double *m_v, 
+                    double *m_rho_i,
+                    double *m_u, 
+                    double *m_qs,
+                    double *m_au,
+                    double *m_bu,
+                    double *m_cu,
+                    double *m_du,
+                    int kst, int kend, 
+                    int jst, int jend, 
+                    int ist, int iend, 
+                    int wg00_tail_k, 
+                    int wg00_tail_j, 
+                    int wg00_tail_i,
+                    int wg00_block_k,
+                    int wg00_block_j, 
+                    int wg00_block_i, 
+                    int num_block_k, 
+                    int num_block_j, 
+                    int num_block_i, 
+                    int block_size,
+                    int block_size_k);
+
+__global__
+void k_jacu_sync(double *m_rsd,
+                 double *m_u,
+                 double *m_qs,
+                 double *m_rho_i,
+                 double *m_au,
+                 double *m_bu,
+                 double *m_cu,
+                 double *m_du,
+                 int nz, int ny, int nx,
+                 int jst, int jend, 
+                 int ist, int iend, 
+                 int temp_kst, int temp_kend);
+__global__
+void k_buts_KL_sync(double *m_rsd,
+                    double *m_u,
+                    double *m_qs,
+                    double *m_rho_i,
+                    double *m_au,
+                    double *m_bu,
+                    double *m_cu,
+                    double *m_du,
+                    int nz, int ny, int nx,
+                    int wf_sum, int wf_base_k, int wf_base_j,
+                    int jst, int jend, 
+                    int ist, int iend, 
+                    int temp_kst, int temp_kend);
+// fullopt
+__global__ 
+void k_jacu_buts_data_gen_fullopt(double *m_u, double *m_qs,
+                                  double *m_rho_i, 
+                                  int jst, int jend, 
+                                  int ist, int iend,
+                                  int temp_kst, int temp_kend, 
+                                  int work_num_item);
+__global__ 
+void k_jacu_buts_BR_fullopt(double *m_v, double *m_rho_i,
+                            double *m_u, double *m_qs,
+                            int kst, int kend, 
+                            int jst, int jend, 
+                            int ist, int iend, 
+                            int wg00_tail_k, int wg00_tail_j, 
+                            int wg00_tail_i,
+                            int wg00_block_k ,int wg00_block_j, 
+                            int wg00_block_i, 
+                            int num_block_k, int num_block_j, 
+                            int num_block_i, 
+                            int block_size,
+                            int block_size_k);
+__global__
+void k_jacu_buts_KL_fullopt(double *g_rsd,
+                            double *g_u,
+                            double *g_qs,
+                            double *g_rho_i,
+                            int nz, int ny, int nx,
+                            int wf_sum, int wf_base_k, 
+                            int wf_base_j,
+                            int jst, int jend, 
+                            int ist, int iend, 
+                            int temp_kst, int temp_kend);
+//---------------------------------------------------------------------
+//   end of include file
+//---------------------------------------------------------------------
+#endif

@@ -1,0 +1,100 @@
+Old LD_PRELOAD=likwid-appDaemon.so
+New LD_PRELOAD=
+Rocmon GPU string: 0
+Rocmon Event string: POWER
+
+
+ NAS Parallel Benchmarks (NPB3.3.1-OCL) - MG Benchmark
+
+ Size: 1024x1024x1024  (class D)
+ Iterations:  50
+
+ Initialization time:         36.8722 seconds
+
+  iter   1
+  iter   2
+  iter   3
+  iter   4
+  iter   5
+  iter   6
+  iter   7
+  iter   8
+  iter   9
+  iter  10
+  iter  11
+  iter  12
+  iter  13
+  iter  14
+  iter  15
+  iter  16
+  iter  17
+  iter  18
+  iter  19
+  iter  20
+  iter  21
+  iter  22
+  iter  23
+  iter  24
+  iter  25
+  iter  26
+  iter  27
+  iter  28
+  iter  29
+  iter  30
+  iter  31
+  iter  32
+  iter  33
+  iter  34
+  iter  35
+  iter  36
+  iter  37
+  iter  38
+  iter  39
+  iter  40
+  iter  41
+  iter  42
+  iter  43
+  iter  44
+  iter  45
+  iter  46
+  iter  47
+  iter  48
+  iter  49
+  iter  50
+
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ L2 Norm is  1.5832750604430E-10
+ Error is    2.9703538808896E-22
+
+
+ MG Benchmark Completed.
+ Class           =                        D
+ Size            =           1024x1024x1024
+ Iterations      =                       50
+ Time in seconds =              9.832037916
+ Mop/s total     =                316704.56
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              12 Jul 2023
+
+ Compile options:
+    CC           = gcc
+    CLINK        = $(CC)
+    C_LIB        = -lm -L/opt/rocm/opencl/lib -lOpenCL
+    C_INC        = -I../common -I/opt/rocm/include
+    CFLAGS       = -g -Wall -O3 -mcmodel=large -fopenmp
+    CLINKFLAGS   = -O3 -mcmodel=large -fopenmp
+
+ OpenCL options:
+    Device type  = CL_DEVICE_TYPE_GPU
+    Device name  = gfx90a:sramecc+:xnack-
+
+--------------------------------------
+ Please send all errors/feedbacks to:
+ Center for Manycore Programming
+ cmp@aces.snu.ac.kr
+ http://aces.snu.ac.kr
+--------------------------------------
+

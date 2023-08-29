@@ -1,0 +1,76 @@
+TABLE,Region roc_stream_copy,Group 1 Raw,ROOF,6
+Region Info,GPU 0,
+RDTSC Runtime [s],0.003443,
+call count,10,
+Event,Counter,GPU 0
+ROCP_FETCH_SIZE,ROCM0,781252.8000
+ROCP_WRITE_SIZE,ROCM1,781251.5000
+ROCP_SQ_INSTS_VALU_ADD_F64,ROCM2,0
+ROCP_SQ_INSTS_VALU_MUL_F64,ROCM3,0
+ROCP_SQ_INSTS_VALU_FMA_F64,ROCM4,0
+ROCP_SQ_INSTS_VALU_MFMA_F64,ROCM5,0
+TABLE,Region roc_stream_copy,Group 1 Metric,ROOF,6
+Metric,GPU 0,
+Runtime RDTSC [s],0.0034,
+Memory Throughput [MB],1525.8831,
+Total Bandwidth [MB/s],443183.5288,
+DP FLOPS [MFLOPS],0,
+DP FLOPS per second [MFLOPS/s],0,
+Operational Intensity [FLOPS/float],0,
+TABLE,Region roc_stream_scale,Group 1 Raw,ROOF,6
+Region Info,GPU 0,
+RDTSC Runtime [s],0.003416,
+call count,10,
+Event,Counter,GPU 0
+ROCP_FETCH_SIZE,ROCM0,781251.9000
+ROCP_WRITE_SIZE,ROCM1,781252.4000
+ROCP_SQ_INSTS_VALU_ADD_F64,ROCM2,0
+ROCP_SQ_INSTS_VALU_MUL_F64,ROCM3,1562500
+ROCP_SQ_INSTS_VALU_FMA_F64,ROCM4,0
+ROCP_SQ_INSTS_VALU_MFMA_F64,ROCM5,0
+TABLE,Region roc_stream_scale,Group 1 Metric,ROOF,6
+Metric,GPU 0,
+Runtime RDTSC [s],0.0034,
+Memory Throughput [MB],1525.8831,
+Total Bandwidth [MB/s],443183.5288,
+DP FLOPS [MFLOPS],1562500,
+DP FLOPS per second [MFLOPS/s],453.8187,
+Operational Intensity [FLOPS/float],0.0078,
+TABLE,Region roc_stream_add,Group 1 Raw,ROOF,6
+Region Info,GPU 0,
+RDTSC Runtime [s],0.004136,
+call count,10,
+Event,Counter,GPU 0
+ROCP_FETCH_SIZE,ROCM0,1562501
+ROCP_WRITE_SIZE,ROCM1,781254
+ROCP_SQ_INSTS_VALU_ADD_F64,ROCM2,1562500
+ROCP_SQ_INSTS_VALU_MUL_F64,ROCM3,0
+ROCP_SQ_INSTS_VALU_FMA_F64,ROCM4,0
+ROCP_SQ_INSTS_VALU_MFMA_F64,ROCM5,0
+TABLE,Region roc_stream_add,Group 1 Metric,ROOF,6
+Metric,GPU 0,
+Runtime RDTSC [s],0.0034,
+Memory Throughput [MB],2288.8232,
+Total Bandwidth [MB/s],664774.8819,
+DP FLOPS [MFLOPS],1562500,
+DP FLOPS per second [MFLOPS/s],453.8187,
+Operational Intensity [FLOPS/float],0.0052,
+TABLE,Region roc_stream_triad,Group 1 Raw,ROOF,6
+Region Info,GPU 0,
+RDTSC Runtime [s],0.004175,
+call count,10,
+Event,Counter,GPU 0
+ROCP_FETCH_SIZE,ROCM0,1562502
+ROCP_WRITE_SIZE,ROCM1,781254.1000
+ROCP_SQ_INSTS_VALU_ADD_F64,ROCM2,0
+ROCP_SQ_INSTS_VALU_MUL_F64,ROCM3,0
+ROCP_SQ_INSTS_VALU_FMA_F64,ROCM4,1562500
+ROCP_SQ_INSTS_VALU_MFMA_F64,ROCM5,0
+TABLE,Region roc_stream_triad,Group 1 Metric,ROOF,6
+Metric,GPU 0,
+Runtime RDTSC [s],0.0034,
+Memory Throughput [MB],2288.8243,
+Total Bandwidth [MB/s],664775.1939,
+DP FLOPS [MFLOPS],3125000,
+DP FLOPS per second [MFLOPS/s],907.6374,
+Operational Intensity [FLOPS/float],0.0104,

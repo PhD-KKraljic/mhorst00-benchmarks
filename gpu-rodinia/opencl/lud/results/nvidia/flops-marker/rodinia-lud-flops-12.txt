@@ -1,0 +1,6 @@
+WG size of kernel = 16 X 16
+Generate input matrix internally, size =4096
+Creating matrix internally size=4096
+Starting nvmon marker
+Time consumed(ms): 2198.578000
+Stopping nvmon marker

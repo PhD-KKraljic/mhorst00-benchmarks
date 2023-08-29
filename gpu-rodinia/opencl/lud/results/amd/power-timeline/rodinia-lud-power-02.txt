@@ -1,0 +1,10 @@
+Old LD_PRELOAD=likwid-appDaemon.so
+New LD_PRELOAD=
+Rocmon GPU string: 0
+Rocmon Event string: POWER
+WG size of kernel = 16 X 16
+Generate input matrix internally, size =4
+Creating matrix internally size=4
+num_devices = 2
+Create GPU context
+ERROR:  perimeter clEnqueueNDRangeKernel()=>-63 failed
